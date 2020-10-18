@@ -4,7 +4,7 @@ class Customer::OrdersController < ApplicationController
   end
 
   def show
-    @oder = order.find(parames[:id])
+    # @order = Order.find(params[:id])
   end
 
   def new
@@ -12,13 +12,13 @@ class Customer::OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new(parames[:id])
+    @order = Order.new(params[:id])
     if @order.save
        redirect_to confirm
     else
        @order = Order.new
        render new
-    end 
+    end
   end
 
   def confirm
@@ -29,8 +29,8 @@ class Customer::OrdersController < ApplicationController
 
   private
 
-  def order_parames
-    parames.require(:order).permit(:pstcode,:address,:name,:payment_method,:status)
+  def order_params
+    params.require(:order).permit(:pstcode,:address,:name,:payment_method,:status)
   end
 
 end

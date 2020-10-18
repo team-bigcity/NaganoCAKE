@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   namespace :admin do
     patch 'order_products/:id', to: 'order_products#update'
 
-    get '/', to: 'top#top'
+    root to: 'top#top'
 
     resources :orders, only: [:index, :show]
     patch 'orders', to: 'orders#update'
@@ -44,14 +44,14 @@ Rails.application.routes.draw do
     delete :cart_products, to: 'cart_products#destroy_all'
     patch 'cart_products/:id', to: 'cart_products#update'
 
+    get 'orders/complete'
     resources :orders, only: [:index, :show, :new, :create]
     post 'orders/confirm'
-    get 'orders/complete'
 
-    resource :customers, only: [:edit]
+    get 'customers/my_page'
+    resources :customers, only: [:edit]
     delete 'customers/destroy_page', to: 'customers#destroy_page'
     patch 'customers/leave', to: 'customers#leave'
-    get 'customers/my_page'
     patch '/customers', to: 'customers#update'
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
