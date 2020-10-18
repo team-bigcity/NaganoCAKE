@@ -7,6 +7,16 @@ class Customer::CustomersController < ApplicationController
   
   def edit
     # @customer = Customer.find(params[:id])
+    # @customer = current_customer
+  end
+  
+  def update
+    @customer = Customer.find(params[:id])
+    if @customer.update(customer_params)
+      redirect_to customers_my_page_path, notice: "You have updated customer successfully."
+    else
+      render :edit
+    end
   end
   
   def destroy_page

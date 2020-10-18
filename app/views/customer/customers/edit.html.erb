@@ -1,5 +1,5 @@
 <h4>登録情報編集</h4>
-<%= form_with model: @customer, url: customer_registration_path, id: 'new_customer', class: 'new_customer', local: true do |f| %>
+<%= form_with model: @customer, local: true do |f| %>
   
   <div class="field">
     名前
@@ -38,8 +38,7 @@
   </div>
   
   <% end %>
-  
-  <%= link_to '編集内容を保存する', customers_path(current_customer), class: 'btn btn-primary' %>
+  <%= link_to '編集内容を保存する', customers_path(@customer), method: :patch, class: 'btn btn-primary' %>
   <!--< if customer_signed_in? && @customer.id == current_customer.id %>-->
         <%= link_to '退会する', customers_hide_path(current_customer), method: :put, "data-confirm" => "本当に退会しますか？", class: 'btn btn-danger' %>
   <!--< end %>-->

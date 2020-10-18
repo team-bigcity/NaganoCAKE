@@ -33,7 +33,7 @@ class Customer::SessionsController < Devise::SessionsController
     root_path
   end
   
-  def reject_user
+  def reject_customer
     @customer = Customer.find_by(email: params[:customer][:email].downcase)
     if @customer
       if (@customer.valid_password?(params[:customer][:password]) && (@customer.active_for_authentication? == false))
