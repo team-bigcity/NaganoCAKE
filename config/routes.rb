@@ -48,7 +48,7 @@ Rails.application.routes.draw do
     get 'orders/complete'
     post 'orders/confirm'
 
-    resource :customers, only: [:edit]
+    resources :customers, only: [:edit]
     delete 'customers/destroy_page', to: 'customers#destroy_page'
     patch 'customers/leave', to: 'customers#leave'
     get 'customers/my_page'
