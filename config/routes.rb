@@ -53,6 +53,7 @@ Rails.application.routes.draw do
     patch 'customers/leave', to: 'customers#leave'
     get 'customers/my_page'
     patch '/customers', to: 'customers#update'
+    put "/customers/:id/hide" => "customers#hide", as: 'customers_hide'
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

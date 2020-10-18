@@ -17,4 +17,8 @@ class Customer < ApplicationRecord
   validates :address, presence: true
   validates :phone_number, presence: true, format: {with: /\A\d{10,11}\z/}
   validates :is_deleted, inclusion: {in: [true, false]}
+  
+  def active_for_authentication?
+    super && (self.is_deleted == false)
+  end
 end
