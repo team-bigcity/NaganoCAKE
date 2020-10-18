@@ -1,14 +1,24 @@
 class Customer::OrdersController < ApplicationController
   def index
+    @orders = Order.all
   end
 
   def show
+    @oder = order.find(parames[:id])
   end
 
   def new
+    @order = Order.new
   end
 
   def create
+    @order = Order.new(parames[:id])
+    if @order.save
+       redirect_to confirm
+    else
+       @order = Order.new
+       render new
+    end 
   end
 
   def confirm
@@ -16,4 +26,12 @@ class Customer::OrdersController < ApplicationController
 
   def complete
   end
+
+  private
+
+  def order_parames
+    parames.require(:order).permit(:pstcode,:address,:name,:payment_method,:status)
+  end
+
 end
+
