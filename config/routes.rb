@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
 
-  devise_for :admin, controllers: {
+  devise_for :admins, controllers: {
   sessions:      'admin/sessions',
   passwords:     'admin/passwords',
   registrations: 'admin/registrations'
 }
-  devise_for :customer, controllers: {
+  devise_for :customers, controllers: {
   sessions:      'customer/sessions',
   passwords:     'customer/passwords',
   registrations: 'customer/registrations'
@@ -13,9 +13,9 @@ Rails.application.routes.draw do
 
   #管理者
   namespace :admin do
-    patch 'order_products/:id', to: 'order_products#update'
-
-    get '/', to: 'top#top'
+    root to: 'tops#top'
+    
+    resources :order_products, only: [:update]
 
     resources :orders, only: [:index, :show]
     patch 'orders', to: 'orders#update'
@@ -43,10 +43,10 @@ Rails.application.routes.draw do
     resources :cart_products, only: [:index, :create, :destroy]
     delete :cart_products, to: 'cart_products#destroy_all'
     patch 'cart_products/:id', to: 'cart_products#update'
-
+    
+    get 'orders/complete'
     resources :orders, only: [:index, :show, :new, :create]
     post 'orders/confirm'
-    get 'orders/complete'
 
     resource :customers, only: [:edit]
     delete 'customers/destroy_page', to: 'customers#destroy_page'
