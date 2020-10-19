@@ -20,6 +20,7 @@ class Customer::CustomersController < ApplicationController
   end
   
   def destroy_page
+    @customer = current_customer
   end
   
   def is_deleted

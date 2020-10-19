@@ -49,7 +49,7 @@ Rails.application.routes.draw do
     post 'orders/confirm'
 
     resources :customers, only: [:edit]
-    delete 'customers/destroy_page', to: 'customers#destroy_page'
+    get 'customers/destroy_page', to: 'customers#destroy_page'
     patch 'customers/leave', to: 'customers#leave'
     get 'customers/my_page'
     patch '/customers/:id/update', to: 'customers#update', as: 'customers_update'
