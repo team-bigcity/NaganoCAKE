@@ -1,0 +1,23 @@
+<div class="body">
+  <div class="container">
+    <div class="row">
+      <br></br>
+      <h1>管理者ログイン</h1>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="field form-group col-xs-9">
+          <%= f.label :"メールアドレス", class: "col-sm-2 control-label" %>
+          <%= f.email_field :email, class: "col-sm-6 form-control-static" %>
+        </div>
+        
+        <div class="field form-group col-xs-9">
+          <%= f.label :"パスワード", class: "col-sm-2 control-label" %>
+          <%= f.password_field :password, class: "col-sm-6 form-control-static" %>
+        </div>
+      
+        <div class="actions col-xs-4">
+          <%= f.submit "ログイン", class: "btn btn-info pull-right btn-lg" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
