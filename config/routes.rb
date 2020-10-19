@@ -13,15 +13,13 @@ Rails.application.routes.draw do
 
   #管理者
   namespace :admin do
-    root to: 'tops#top'
     
-    resources :order_products, only: [:update]
+    root to: 'tops#top'
+    resources :order_products, only:[:update]
+    
+    resources :orders, only: [:index, :show, :update]
 
-    resources :orders, only: [:index, :show]
-    patch 'orders', to: 'orders#update'
-
-    resources :customers, only: [:show, :edit, :index]
-    patch 'customers', to: 'customers#update'
+    resources :customers, only: [:show, :edit, :index, :update]
 
     resources :genres, only: [:index, :create, :edit]
     patch 'genres', to: 'genres#update'
@@ -48,7 +46,8 @@ Rails.application.routes.draw do
     resources :orders, only: [:index, :show, :new, :create]
     post 'orders/confirm'
 
-    resources :customers, only: [:edit]
+    
+    resource :customers, only: [:edit]
     delete 'customers/destroy_page', to: 'customers#destroy_page'
     patch 'customers/leave', to: 'customers#leave'
     get 'customers/my_page'
