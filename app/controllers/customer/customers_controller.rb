@@ -1,6 +1,8 @@
 class Customer::CustomersController < ApplicationController
     
   def my_page
+    @customer = current_customer
+    # @customer = Customer.find(params[:id])
   end
   
   def edit
