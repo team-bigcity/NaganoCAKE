@@ -6,7 +6,7 @@ class Customer::CustomersController < ApplicationController
   end
   
   def edit
-    # @customer = Customer.find(params[:id])
+    @customer = Customer.find(params[:id])
     # @customer = current_customer
   end
   
@@ -41,4 +41,9 @@ class Customer::CustomersController < ApplicationController
   #   # flash[:success] = "User deleted"
   #   redirect_to about_path
   # end
+  private
+  def customer_params
+    params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :email, :postcode, :address, :phone_number)
+  end
+  
 end
