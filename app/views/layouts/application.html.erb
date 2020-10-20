@@ -4,13 +4,15 @@
     <title>NaganoCake</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <script src="https://kit.fontawesome.com/c48f5abc4e.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+
     <%= render "layouts/header" %>
+
 
     <main>
       <div class="container">
@@ -18,6 +20,8 @@
     </main>
     <%= yield %>
 
+
     <!--%= render "layouts/footer" %>-->
+
   </body>
 </html>
