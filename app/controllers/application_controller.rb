@@ -6,5 +6,5 @@ class ApplicationController < ActionController::Base
     when Customer
         
     end
-   end
+  end
 end

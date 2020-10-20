@@ -19,4 +19,5 @@ class Admin::ProductsController < ApplicationController
   end
   
   private
+
 end
