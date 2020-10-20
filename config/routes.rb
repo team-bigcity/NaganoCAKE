@@ -33,7 +33,7 @@ Rails.application.routes.draw do
     get '/about', to: 'homes#about'
 
     resources :addresses, only: [:index, :create, :edit, :destroy]
-    patch 'addresses/:id', to: 'addresses#update'
+    patch 'addresses/:id/update', to: 'addresses#update', as: 'addresss_update'
 
     resources :products, only: [:index, :show]
     root 'products#top'
@@ -46,12 +46,12 @@ Rails.application.routes.draw do
     resources :orders, only: [:index, :show, :new, :create]
     post 'orders/confirm'
 
-    
-    resource :customers, only: [:edit]
-    delete 'customers/destroy_page', to: 'customers#destroy_page'
+    resources :customers, only: [:edit]
+    get 'customers/destroy_page', to: 'customers#destroy_page'
     patch 'customers/leave', to: 'customers#leave'
     get 'customers/my_page'
-    patch '/customers', to: 'customers#update'
+    patch '/customers/:id/update', to: 'customers#update', as: 'customers_update'
+    put "/customers/:id/hide" => "customers#hide", as: 'customers_hide'
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
