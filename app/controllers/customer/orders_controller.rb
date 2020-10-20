@@ -14,7 +14,7 @@ class Customer::OrdersController < ApplicationController
   def create
      @order = Order.new(params[:id])
     if @order.save
-       redirect_to confirm
+       redirect_to comfirm
     else
        @order = Order.new
        render new
@@ -22,6 +22,14 @@ class Customer::OrdersController < ApplicationController
   end
 
   def confirm
+    #   @products = Product.find_by(params[:id])
+    #   @order = Order.find(params[:id])
+    # if @order.save
+    #   redirect_to complete_path
+    # else
+    #   @order = Order.new
+    #   render new
+    # end
   end
 
   def complete
