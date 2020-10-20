@@ -1,0 +1,38 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container">
+    <nav class='nav navbar-nav navbar-left' >
+      <h2 class="default">Logo</h2>
+    </nav>
+
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+        　<!--customerのheader-->
+        <% if customer_signed_in? %>
+          <li class="default">ようこそ、<%= current_customer.last_name %>さん！</li>
+          <li><%= link_to "マイページ", customers_my_page_path(current_customer), class: "glyphicon glyphicon-home home" %></li>
+          <li><%= link_to "商品一覧", products_path, class: "glyphicon glyphicon-gift" %></li>
+          <li><%= link_to "カート", cart_products_path, class: "glyphicon glyphicon-shopping-cart"%></li>
+          <li><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "glyphicon glyphicon-log-out logout" %></li>
+          <!--adminのheader-->
+        <% elsif admin_signed_in?  %>
+          <li><%= link_to "商品一覧",admin_orders_path, class: "glyphicon glyphicon-gift" %></li>
+          <li><%= link_to "会員一覧",admin_customers_path, class: "glyphicon glyphicon-user"%></li>
+          <li><%= link_to "注文履歴一覧",orders_path, class: "glyphicon glyphicon-list-alt"%></li>
+          <li><%= link_to "ジャンル一覧",admin_genres_path, class: "glyphicon glyphicon-th-list" %></li>
+          <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "glyphicon glyphicon-log-out logout" %></li>
+          <nav class='nav navbar-nav navbar-right' >
+		      <div class="col-sm-10">
+			      <input type="" class="" id="InputSearch" placeholder="Search">
+		      </div>
+          </nav>
+        <% else %>
+        　<!--ログイン前のheader-->
+          <li><%= link_to "About", about_path, class: "glyphicon glyphicon-link about" %></li>
+          <li><%= link_to "商品一覧", products_path, class: "glyphicon glyphicon-gift" %></li>
+          <li><%= link_to "新規登録", new_customer_registration_path, class: "glyphicon glyphicon-edit sign_up" %></li>
+          <li><%= link_to "ログイン", new_customer_session_path, class: "glyphicon glyphicon-log-in sign_in" %></li>
+        <% end %>
+      </ul>
+    </nav>
+  </div>
+</header>

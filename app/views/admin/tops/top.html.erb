@@ -1,2 +1,19 @@
-<h1>Tops#top</h1>
-<p>Find me in app/views/tops/top.html.erb</p>
+<div class="body">
+  <div class="container">
+    <div class="row">
+    <br></br>
+    <h1 class="form-group col-xs-3">管理者画面</h1>
+      <div>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <h1>本日の注文件数
+          <%= link_to admin_orders_path, class: "btn-link" do %>
+          <%= @orders.count %>件
+          <% end %>
+        </h1>
+      </div>
+    </div>
+  </div>  
+</div>
