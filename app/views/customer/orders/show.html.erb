@@ -1,67 +1,76 @@
-<h2>注文履歴詳細</h2>
+  <div class="container">
+    <div class="row">
+      <div class="col-log-8">
+        <% @orders.each do |order| %>
+          <h2>注文履歴詳細</h2>
+            <section>
+              <h2>注文情報</h2>
+              <table>
+                <tr>
+                  <td>注文日</td>
+                  <td><% order.created_at.strftime(”%Y年%m月%d日”) %></td>
+                </tr>
+                <tr>
+                  <td>配送先</td>
+                  <td>〒<% order.postcode %><br>
+                        <%= order.address %><br>
+                        <%= order.name %>
+                  </td>
+                </tr>
+                <tr>
+                  <td>支払方法</td>
+                  <td><% orders.payment_method %></td>
+                </tr>
+                <tr>
+                  <td>ステータス</td>
+                  <td><% orders.status %></td>
+                </tr>
+              </table>
+            </section>
+          </div>
 
-    <% @orders.each do |order| %>
-      <section>
-        <h2>注文情報</h2>
-        <table>
-          <tr>
-            <td>注文日</td>
-            <td><% order.created_at.strftime(”%Y年%m月%d日”) %></td>
-          </tr>
-          <tr>
-            <td>配送先</td>
-            <td>〒<% order.postcode %><br>
-                  <%= order.address %><br>
-    			      	<%= order.name %>
-    			  </td>
-          </tr>
-          <tr>
-            <td>支払方法</td>
-            <td><% orders.payment_method %></td>
-          </tr>
-          <tr>
-            <td>ステータス</td>
-            <td><% orders.status %></td>
-          </tr>
-        </table>
-      </section>
+          <div class="col-log-3">
+            <section>
+              <h2>請求情報</h2>
+                <table>
+                  <tr>
+                    <td>商品合計</td>
+                    <td><%= total_payment %>
+                      <!--(%= addTax(item.product.price) %>円/個) ×%= item.quantity %>個＝%= addTax(item.price) %>円<br>-->
+                  </tr>
+                  <tr>
+                    <td>配送料</td>
+                    <td><% order.shipping_cost %></td>
+                  </tr>
+                  <tr>
+                    <td>御請求額</td>
+                    <td><%= total_payment + order.shipping_cost %>円</td>
+                  </tr>
+                </table>
+            </section>
+          </div>
+        <% end %>
 
-      <section>
-        <h2>請求情報</h2>
-          <table>
-            <tr>
-              <td>商品合計</td>
-              <td><%= total_payment %>
-                <!--(%= addTax(item.product.price) %>円/個) ×%= item.quantity %>個＝%= addTax(item.price) %>円<br>-->
-            </tr>
-            <tr>
-              <td>配送料</td>
-              <td><% order.shipping_cost %></td>
-            </tr>
-            <tr>
-              <td>御請求額</td>
-              <td><%= total_payment + order.shipping_cost %>円</td>
-            </tr>
-          </table>
-      </section>
-    <% end %>
-
-    <% @ordere_products.each do |order| %>
-      <section>
-          <h2>注文内容</h2>
-          <table>
-            <tr>
-              <th>商品</th>
-              <th>単価（税込）</th>
-              <th>個数</th>
-              <th>小計</th>
-            </tr>
-            <tr>
-              <td><%= product.name %></td>
-              <td><%= order_products.taxed_price %></td>
-              <td><%= order_products.amount %></td>
-              <td><% order_products.taxed_price %> ×<% order_products.amount %>個＝<%= addTax(item.price) %>円</td>
-            </tr>
-          </table>
-      </section>
-    <% end %>
+        <div class="col-log-8">
+          <!--% @ordere_products.each do |order| %>-->
+            <section>
+                <h2>注文内容</h2>
+                <table>
+                  <tr>
+                    <th>商品</th>
+                    <th>単価（税込）</th>
+                    <th>個数</th>
+                    <th>小計</th>
+                  </tr>
+                  <tr>
+                    <td><%= product.name %></td>
+                    <td><%= order_products.taxed_price %></td>
+                    <td><%= order_products.amount %></td>
+                    <td><% order_products.taxed_price %> ×<% order_products.amount %>個＝<%= addTax(item.price) %>円</td>
+                  </tr>
+                </table>
+            </section>
+          <!--% end %>-->
+        </div>
+    </div>
+  </div>
