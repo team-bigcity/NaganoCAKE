@@ -1,3 +1,22 @@
 // Place all the styles related to the orders controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+*{
+ margin :0;
+ padding:0;
+ box-sizing: border-box;
+}
+
+.table{
+  border: 1px solid #f7f7f7;
+}
+
+.table-title{
+  background-color:#f7f7f7;
+}
+
+.complete-comment{
+  text-align: center;
+  margin-top: 350px;
+}
