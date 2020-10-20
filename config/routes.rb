@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     resources :customers, only: [:show, :edit, :index, :update]
 
     resources :genres, only: [:index, :create, :edit]
-    patch 'genres', to: 'genres#update'
+    patch 'genres/:id', to: 'genres#update'
 
     resources :products, except: [:destroy, :update]
     patch 'products/:id', to: 'products#update'
