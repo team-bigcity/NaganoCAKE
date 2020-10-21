@@ -1,6 +1,7 @@
 class Customer::ProductsController < ApplicationController
   def top
     @genres = Genre.where(is_active: true)
+    @products = Product.all.page(params[:page]).per(4)
     # @product = Product.find(params[:id])
   end
 
