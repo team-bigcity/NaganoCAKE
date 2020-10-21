@@ -49,3 +49,4 @@
   non_taxed_price: '800',
   is_active: 'true'
   )
+
