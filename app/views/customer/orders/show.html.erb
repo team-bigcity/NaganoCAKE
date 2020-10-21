@@ -8,7 +8,7 @@
               <table>
                 <tr>
                   <td>注文日</td>
-                  <td><%= order.created_at.strftime(”%Y年%m月%d日”) %></td>
+                  <td><%= order.created_at.strftime("%Y年%m月%d日") %></td>
                 </tr>
                 <tr>
                   <td>配送先</td>
@@ -19,11 +19,11 @@
                 </tr>
                 <tr>
                   <td>支払方法</td>
-                  <td><%= orders.payment_method %></td>
+                  <td><%= order.payment_method %></td>
                 </tr>
                 <tr>
                   <td>ステータス</td>
-                  <td><%= orders.status %></td>
+                  <td><%= order.status %></td>
                 </tr>
               </table>
             </section>
@@ -35,7 +35,7 @@
                 <table>
                   <tr>
                     <td>商品合計</td>
-                    <td><% order_products.taxed_price %> ×<% order_products.amount %>個＝<%= addTax(item.price) %>円</td>
+                    <!--<td>% order_products.taxed_price %> ×% order_products.amount %>個＝%= addTax(item.price) %>円</td>-->
                   </tr>
                   <tr>
                     <td>配送料</td>
@@ -43,7 +43,7 @@
                   </tr>
                   <tr>
                     <td>ご請求額</td>
-                    <td><% products.taxed_price %> ×<% products.amount %>個＝<%= orders.total_payment %>円</td>
+                    <!--<td>% products.taxed_price %> ×% products.amount %>個＝%= orders.total_payment %>円</td>-->
                   </tr>
                 </table>
             </section>
@@ -62,11 +62,11 @@
                     <th>小計</th>
                   </tr>
                   <tr>
-                    <td><%= product.name %></td>
-                    <td><%= order_products.taxed_price %></td>
-                    <td><%= order_products.amount %></td>
-                    <td><% order_products.taxed_price %> ×<% order_products.amount %>個＝<%= addTax(item.price) %>円</td>
-                  </tr>
+                  <!--  <td>%= product.name %></td>-->
+                  <!--  <td>%= order_products.taxed_price %></td>-->
+                  <!--  <td>%= order_products.amount %></td>-->
+                  <!--  <td>% order_products.taxed_price %> ×% order_products.amount %>個＝%= addTax(item.price) %>円</td>-->
+                  <!--</tr>-->
                 </table>
             </section>
           <!--% end %>-->

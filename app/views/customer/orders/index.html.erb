@@ -16,14 +16,14 @@
               <tbody>
                   <% @orders.each do |order| %>
                   <tr>
-                    <td><%= order.created_at.strftime(”%Y年%m月%d日”) %></td>
+                    <td><%= order.created_at.strftime("%Y年%m月%d日") %></td>
                     <td>〒<%= order.postcode %><br>
                           <%= order.address %><br>
                           <%= order.name %>
                     </td>
-                    <td><%= product.name %></td>
-                    <td><%= total_payment + order.shipping_cost %>円</td>
-                    <td><% orders.status %></td>
+                    <!--<td>%= order_product.name %></td>-->
+                    <!--<td>%= total_payment + order.shipping_cost %>円</td>-->
+                    <!--<td>%= orders.status %></td>-->
                     <td><%= link_to "表示する", order_path(order), class: "btn btn-primary order_#{order.id}" %></td>
                   </tr>
                   <% end %>
