@@ -9,12 +9,12 @@
       <div class="col-xs-10">
       	<table>
 	      	<tr class="col-xs-6">
-					  <td><%= attachment_image_tag(@product, :image, :fill, 50, 50, fallback: "No_Image.jpg") %></div>
+					  <div><%= attachment_image_tag(@product, :image, size:'200x150', fallback: "No_Image.jpg", size:'200x150') %></div>
 					</tr>
 					<tr class="col-xs-6">
 					  <td><%= @product.name %><br/>
 					  		<%= @product.introduction %><br/>
-					 			<%= @product.(non_taxed_price * 1.1).floor %>(税込)<br/>
+					 			<%= (@product.non_taxed_price*1.1).floor %>(税込)<br/>
 					  		個数選択、カートに入れる
 					  </td>
 					</tr>

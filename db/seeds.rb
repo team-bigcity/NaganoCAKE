@@ -41,11 +41,74 @@
   # is_active: 'true'
   # )
   
- Product.create!(
-  name: 'チーズケーキ',
+# Product.create!(
+#   name: 'チーズケーキ',
+#   genre_id: '1',
+#   image_id: '',
+#   introduction: '2222',
+#   non_taxed_price: '800',
+#   is_active: 'true'
+#   )
+  
+  Product.create!(
+  name: 'チョコケーキ',
   genre_id: '1',
   image_id: '',
+  introduction: 'チョコケーキです',
+  non_taxed_price: '900',
+  is_active: 'true'
+  )
+  
+  Product.create!(
+  name: 'ホールケーキ',
+  genre_id: '1',
+  image_id: '',
+  introduction: 'ホールケーキです',
+  non_taxed_price: '1200',
+  is_active: 'true'
+  )
+  
+  Product.create!(
+  name: 'シフォンケーキ',
+  genre_id: '1',
+  image_id: '',
+  introduction: 'シフォンケーキです',
+  non_taxed_price: '700',
+  is_active: 'true'
+  )
+  
+  Product.create!(
+  name: 'マフィン',
+  genre_id: '2',
+  image_id: '',
+  introduction: 'マフィンです',
+  non_taxed_price: '500',
+  is_active: 'true'
+  )
+  
+  Product.create!(
+  name: 'マカロン',
+  genre_id: '2',
+  image_id: '',
+  introduction: 'マカロンです',
+  non_taxed_price: '500',
+  is_active: 'true'
+  )
+  
+  Product.create!(
+  name: 'クッキー',
+  genre_id: '2',
+  image_id: 'クッキーです',
   introduction: '2222',
-  non_taxed_price: '800',
+  non_taxed_price: '400',
+  is_active: 'true'
+  )
+  
+  Product.create!(
+  name: 'マドレーヌ',
+  genre_id: '2',
+  image_id: '',
+  introduction: 'マドレーヌです',
+  non_taxed_price: '600',
   is_active: 'true'
   )
