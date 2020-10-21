@@ -24,13 +24,13 @@
               <input type="checkbox" value="checkbox1">ご自身の住所<br>
                     〒<%= current_customer.postcode %><br>
                     <%= current_customer.address %><br>
-                    <%= current_customer.last_name %><%= current_customer.first_name %>
+                    <%= current_customer.last_name %><%= current_customer.first_name %> 様
             </label>
           </div>
         </div>
       </div>
 
-    <!--% form_with model:@address, local:true do |address| %>-->
+    <% form_with model:@order, local:true do |f| %>
       <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
           <div class="checkbox">
@@ -75,6 +75,6 @@
           <input type="" class="formcontrol" id="name" placeholder="宛名">
         </div>
       </div>
-      <!--% address.submit "確認画面へ進む", class:"btn btn-primary" %>-->
-    <!--% end %>-->
+      <% order.submit "確認画面へ進む", class:"btn btn-primary" %>
+    <% end %>
   </form>
