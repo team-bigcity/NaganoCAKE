@@ -7,19 +7,70 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
   Customer.create!(
+  id: 1,
   last_name: '山田',
   first_name: '花子',
   last_name_kana: 'ヤマダ',
   first_name_kana: 'ハナコ',
   email: 'hoge@example.com',
-  postcode: '1500041',
+  postcode: 1500041,
   address: '東京都渋谷区神南1丁目19-11パークスウェースクエア2 4階',
   phone_number: '0368694700',
   password: 'aaaaaa',
   is_deleted: false
   )
 
-Admin.create!(
+  Admin.create!(
     email: 'admin@admin.com', 
     password: 'adminadmin'
+    )
+  
+  Order.create!(
+    id: 1,
+    customer_id: 1,
+    postcode: 1500041,
+    address: '東京都渋谷区神南1丁目19-11パークスウェースクエア2 4階',
+    name: '山田花子',
+    shipping_cost: 800,
+    payment_method: 1,
+    total_payment: 800,
+    status: 0
+    )
+    
+  Product.create!(
+    id: 1,
+    genre_id: 1,
+    image_id: 1,
+    name: '美味しいケーキ',
+    introduction: 'とにかくおいしい',
+    non_taxed_price: 1000,
+    is_active: true
+    )
+    
+  Product.create!(
+    id: 2,
+    genre_id: 1,
+    image_id: 2,
+    name: 'まずいケーキ',
+    introduction: 'とにかくまずい',
+    non_taxed_price: 200,
+    is_active: true
+    )
+    
+  OrderProduct.create!(
+    id: 1,
+    order_id: 1,
+    product_id: 1,
+    taxed_price: 1080,
+    amount: 2,
+    making_status: 0
+    )
+  
+  OrderProduct.create!(
+    id: 2,
+    order_id: 1,
+    product_id: 2,
+    taxed_price: 216,
+    amount: 5,
+    making_status: 3
     )
