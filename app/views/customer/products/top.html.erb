@@ -1,2 +1,49 @@
-<h1>Products#top</h1>
-<p>Find me in app/views/products/top.html.erb</p>
+
+<div class="body"> 
+  <div class="container-fluid">
+    </br>
+    <div class="row">
+      <div class="col-xs-2">
+        <%= render 'customer/products/sidebar', genres: @genres  %>
+      </div>
+      
+      <div class="col-xs-10">
+          <div>ようこそ、NaganoCakeへ！<br/>
+               このサイトは、ケーキ販売のECサイトになります。<br/>
+               会員でない方も商品の閲覧はできますが、<br/>
+               購入んは会員登録が必要になります。
+          </div>
+      </div>
+      
+      <div class="col-xs-10">
+          <h3>オススメ商品</h3>
+          <table>
+            <tr>
+              <!--商品画像リンクにして、クリックすると商品詳細画面に飛ぶように設定-->
+              <td>
+                image<br/>
+                商品1<br/>
+                ￥0,000
+              </td>
+              <td>
+                image<br/>
+                商品2<br/>
+                ￥0,000
+              </td>
+              <td>
+                image<br/>
+                商品3<br/>
+                ￥0,000
+              </td>
+              <td>
+                image<br/>
+                商品4<br/>
+                ￥0,000
+              </td>
+            </tr>
+          </table>
+          <%= link_to 'もっと見る>', products_path %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,2 +1,25 @@
-<h1>Products#show</h1>
-<p>Find me in app/views/products/show.html.erb</p>
+<div class="body"> 
+  <div class="container-fluid">
+  	</br>
+    <div class="row">
+      <div class="col-xs-2">
+        <%= render 'customer/products/sidebar', genres: @genres  %>
+      </div>
+      
+      <div class="col-xs-10">
+      	<table>
+	      	<tr class="col-xs-6">
+					  <td><%= attachment_image_tag(@product, :image, :fill, 50, 50, fallback: "No_Image.jpg") %></div>
+					</tr>
+					<tr class="col-xs-6">
+					  <td><%= @product.name %><br/>
+					  		<%= @product.introduction %><br/>
+					 			<%= @product.(non_taxed_price * 1.1).floor %>(税込)<br/>
+					  		個数選択、カートに入れる
+					  </td>
+					</tr>
+				</table>
+	  	</div>
+    </div>
+  </div>
+</div>
