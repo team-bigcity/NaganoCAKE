@@ -1,2 +1,29 @@
-<h1>Products#index</h1>
-<p>Find me in app/views/products/index.html.erb</p>
+<div class="body"> 
+  <div class="container-fluid">
+    </br>
+    <div class="row">
+      <div class="col-xs-2">
+        <%= render 'customer/products/sidebar', genres: @genres %>
+      </div>
+      
+      <div class="col-xs-10">
+          <h3>商品一覧</h3>(全<% @products.count %>件)<br>
+            <table class="table table-hover table-bordered">
+              
+              <tbody>
+        		  <% @products.each do |product| %>
+          		  <tr>
+                  <%= link_to product_path(product), class: "btn-link" do %>
+                  <%= attachment_image_tag(@product, :image, size:'200x150', fallback: "No_Image.jpg", size:'200x150') %>
+                  <% end %><br/>
+                  <%= product.name %><br/>
+                  <%= product.non_taxed_price.to_s(:delimited) %>
+                </tr>
+              <% end %>
+              </tbody>
+            </table>
+        <div><%= paginate @products %></div>
+      </div>
+    </div>
+  </div>
+</div>
