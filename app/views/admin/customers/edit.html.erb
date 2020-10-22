@@ -1,2 +1,76 @@
-<h1>Admin::Customers#edit</h1>
-<p>Find me in app/views/admin/customers/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12 center-block" style="margin: 20px 0 50px 0">
+      <h3><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</h3>
+    </div>
+    <div class="col-lg-12 center-block">
+    <% if @customer.errors.any? %>
+    	<div id="error_explanation">
+    		<h3><%= @customer.errors.count %>error prohibited this obj from being saved:</h3>
+  			<ul>
+  				<% @customer.errors.full_messages.each do |message| %>
+  				<li><%= message %></li>
+  				<% end %>
+    		</ul>
+    	</div>
+    <% end %>
+      <%= form_with model:@customer, url: admin_customer_path, local: true, class: "form-horizontal" do |f| %>
+      	<div class="form-group">
+      		<label class="col-sm-2 control-label" for="InputEmail">会員ID</label>
+      		<div class="col-sm-10">
+      		  <%= @customer.id %>
+      		</div>
+      	</div>
+      	<div class="form-group">
+      		<label class="col-sm-2 control-label" for="InputPassword">氏名</label>
+      		<div class="col-sm-10 form-inline">
+      		  <%= f.text_field :last_name, placeholder: "姓", class: 'form-control', value: @customer.last_name %>
+      			<%= f.text_field :first_name, placeholder: "名", class: 'form-control', value: @customer.first_name %>
+      		</div>
+      	</div>
+      	<div class="form-group">
+      		<label class="col-sm-2 control-label" for="InputEmail">フリガナ</label>
+      		<div class="col-sm-10 form-inline">
+      		  <%= f.text_field :last_name_kana, placeholder: "セイ", class: 'form-control', value: @customer.last_name_kana %>
+      		  <%= f.text_field :first_name_kana, placeholder: "メイ", class: 'form-control', value: @customer.first_name_kana %>
+      		</div>
+      	</div>
+      	<div class="form-group">
+      		<label class="col-sm-2 control-label" for="InputEmail">郵便番号</label>
+      		<div class="col-sm-10 form-inline">
+      		  <%= f.text_field :postcode, placeholder: "ハイフンなし", class: 'form-control', value: @customer.postcode %>
+      		</div>
+      	</div>
+      	<div class="form-group">
+      		<label class="col-sm-2 control-label" for="InputEmail">住所</label>
+      		<div class="col-sm-10">
+      		  <%= f.text_field :address, class: 'form-control', value: @customer.address %>
+      		</div>
+      	</div>
+      	<div class="form-group">
+      		<label class="col-sm-2 control-label" for="InputEmail">電話番号</label>
+      		<div class="col-sm-10 form-inline">
+      		  <%= f.text_field :phone_number, placeholder: "ハイフンなし", class: 'form-control', value: @customer.phone_number %>
+      		</div>
+      	</div>
+      	<div class="form-group">
+      		<label class="col-sm-2 control-label" for="InputEmail">メール・アドレス</label>
+      		<div class="col-sm-4">
+      		  <%= f.email_field :email, class: 'form-control', value: @customer.email %>
+      		</div>
+      	</div>
+      	<div class="form-group">
+      		<label class="col-sm-2 control-label" for="InputEmail">会員ステータス</label>
+      		<div class="col-sm-10">
+      		  <%= f.radio_button :is_deleted, :false, checked: true %>有効
+      		  <%= f.radio_button :is_deleted, :true %>退会済み
+      		</div>
+      	</div>
+      	<div class="form-group">
+      	 <%= f.submit "変更を保存する", class: 'btn btn-primary col-xs-3' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+  
