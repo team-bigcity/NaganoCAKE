@@ -75,3 +75,18 @@
     taxed_price: 216,
     amount: 5,
     making_status: 3
+    )
+  
+  CartProduct.create!(
+    id: 1,
+    customer_id: 1,
+    product_id: 1,
+    amount: 3
+    )
+    
+  CartProduct.create!(
+    id: 2,
+    customer_id: 1,
+    product_id: 2,
+    amount: 5
+    )

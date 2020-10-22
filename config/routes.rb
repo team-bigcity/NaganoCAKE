@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     resources :order_products, only:[:update]
 
     resources :orders, only: [:index, :show, :update]
-    
+
     resources :customers, only: [:show, :edit, :index, :update]
 
     resources :genres, only: [:index, :create, :edit]
@@ -38,9 +38,10 @@ Rails.application.routes.draw do
     resources :products, only: [:index, :show]
     root 'products#top'
 
+    delete 'cart_products/destroy_all', to: 'cart_products#destroy_all'
     resources :cart_products, only: [:index, :create, :destroy]
-    delete :cart_products, to: 'cart_products#destroy_all'
     patch 'cart_products/:id', to: 'cart_products#update'
+
 
     get 'orders/complete'
     get 'orders/confirm'
