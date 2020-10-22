@@ -21,9 +21,11 @@
   )
 
   Admin.create!(
-    email: 'admin@admin.com',
+
+    email: 'admin@admin.com', 
     password: 'adminadmin'
     )
+  
 
   Order.create!(
     id: 1,
@@ -73,4 +75,3 @@
     taxed_price: 216,
     amount: 5,
     making_status: 3
-    )
