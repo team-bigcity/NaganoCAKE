@@ -19,12 +19,21 @@ class Admin::ProductsController < ApplicationController
   end
 
   def show
+    @product = Product.find(params[:id])
   end
 
   def edit
+    @genre = Genre.where(is_active: true)
+    @product = Product.find(params[:id])
   end
 
   def update
+    @product = Product.find(params[:id])
+    if @product.update(product_params)
+      redirect_to admin_product_path
+    else
+      render :edit
+    end
   end
   
   private
