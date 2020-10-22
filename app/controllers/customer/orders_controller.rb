@@ -1,10 +1,13 @@
 class Customer::OrdersController < ApplicationController
   def index
      @orders = Order.all
+     @order = OrderProduct.all
   end
 
   def show
      @order = Order.find(params[:id])
+     @orders = Order.all
+     @order_product = OrderProduct.all
   end
 
   def new
@@ -22,14 +25,8 @@ class Customer::OrdersController < ApplicationController
   end
 
   def confirm
-    #   @products = Product.find_by(params[:id])
-    #   @order = Order.find(params[:id])
-    # if @order.save
-    #   redirect_to complete_path
-    # else
-    #   @order = Order.new
-    #   render new
-    # end
+      @orders = Order.all
+      @order_product = OrderProduct.all
   end
 
   def complete

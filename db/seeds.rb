@@ -21,10 +21,12 @@
   )
 
   Admin.create!(
+
     email: 'admin@admin.com', 
     password: 'adminadmin'
     )
   
+
   Order.create!(
     id: 1,
     customer_id: 1,
@@ -36,7 +38,7 @@
     total_payment: 800,
     status: 0
     )
-    
+
   Product.create!(
     id: 1,
     genre_id: 1,
@@ -46,7 +48,7 @@
     non_taxed_price: 1000,
     is_active: true
     )
-    
+
   Product.create!(
     id: 2,
     genre_id: 1,
@@ -56,7 +58,7 @@
     non_taxed_price: 200,
     is_active: true
     )
-    
+
   OrderProduct.create!(
     id: 1,
     order_id: 1,
@@ -65,7 +67,7 @@
     amount: 2,
     making_status: 0
     )
-  
+
   OrderProduct.create!(
     id: 2,
     order_id: 1,
