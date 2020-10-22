@@ -13,6 +13,7 @@ class Admin::ProductsController < ApplicationController
     if @product.save
       redirect_to admin_products_path
     else
+      @genre = Genre.where(is_active: true)
       render :new
     end
   end
