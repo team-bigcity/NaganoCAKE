@@ -3,11 +3,10 @@ class Product < ApplicationRecord
   
   has_many :order_products
   
-  attachment :image
+  belongs_to :genre
   
+  attachment :image
   validates :name, presence: true
   validates :introduction, presence: true
   validates :non_taxed_price, numericality: { only_integer: true }
-  validates :is_active, inclusion: {in: [true, false]}
-  
 end

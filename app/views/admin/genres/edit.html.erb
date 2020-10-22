@@ -4,7 +4,7 @@
     <br></br>
         <div class="row">
             <div class="col-xs-6">
-                <%= form_for @genre, :url => {:action => :update} do |f| %>
+                <%= form_with model: @genre, url: admin_genre_path, local:true do |f| %>
                 <div>
                     <i></i>ジャンル
                     <%= f.text_field :name %>
