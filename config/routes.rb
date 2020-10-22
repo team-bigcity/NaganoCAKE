@@ -13,18 +13,17 @@ Rails.application.routes.draw do
 
   #管理者
   namespace :admin do
-    
+
     root to: 'tops#top'
     resources :order_products, only:[:update]
-    
+
     resources :orders, only: [:index, :show, :update]
 
     resources :customers, only: [:show, :edit, :index, :update]
 
     resources :genres, only: [:index, :create, :edit, :update]
 
-    resources :products, except: [:destroy, :update]
-    patch 'products/:id', to: 'products#update'
+    resources :products, except: [:destroy]
   end
 
   #顧客
@@ -37,13 +36,14 @@ Rails.application.routes.draw do
     resources :products, only: [:index, :show]
     root 'products#top'
 
+    delete 'cart_products/destroy_all', to: 'cart_products#destroy_all'
     resources :cart_products, only: [:index, :create, :destroy]
-    delete :cart_products, to: 'cart_products#destroy_all'
     patch 'cart_products/:id', to: 'cart_products#update'
-    
+
+
     get 'orders/complete'
-    resources :orders, only: [:index, :show, :new, :create]
-    post 'orders/confirm'
+    get 'orders/confirm'
+    resources :orders, only: [:index, :show, :new, :create,]
 
     resources :customers, only: [:edit]
     get 'customers/destroy_page', to: 'customers#destroy_page'

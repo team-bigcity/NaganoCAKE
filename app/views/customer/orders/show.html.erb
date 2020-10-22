@@ -1,2 +1,83 @@
-<h1>Orders#show</h1>
-<p>Find me in app/views/orders/show.html.erb</p>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-9">
+        <% @orders.each do |f| %>
+        <h2>注文履歴詳細</h2>
+        <section>
+          <h3>注文情報</h3>
+          <table class="table">
+            <tr>
+              <td>注文日</td>
+              <td><%= f.created_at.strftime("%Y年%m月%d日") %></td>
+            </tr>
+            <tr>
+              <td>配送先</td>
+              <td>〒<%= f.postcode %><br>
+                    <%= f.address %><br>
+                    <%= f.name %>
+              </td>
+            </tr>
+            <tr>
+              <td>支払方法</td>
+              <td><%= f.payment_method %></td>
+            </tr>
+            <tr>
+              <td>ステータス</td>
+              <td><%= f.status %></td>
+            </tr>
+          </table>
+        </section>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4">
+        <section>
+          <h3>請求情報</h3>
+            <table class="table">
+              <tr>
+                <td>商品合計</td>
+                <% @order_product .each do |f| %>
+                <td><%=f.taxed_price * f.amount %>円</td>
+                <% end %>
+              </tr>
+              <tr>
+                <td>配送料</td>
+                <% @orders.each do |f| %>
+                <td><%= f.shipping_cost %>円</td>
+                <% end %>
+              </tr>
+              <tr>
+                <td>ご請求額</td>
+                <% @order_product .each do |f| %>
+                <td><%= f.taxed_price * f.amount %>円</td>
+                <% end %>
+              </tr>
+            </table>
+        </section>
+        <% end %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6">
+        <% @order_product .each do |f| %>
+          <section>
+              <h3>注文内容</h3>
+              <table class="table">
+                <tr>
+                  <th>商品</th>
+                  <th>単価（税込）</th>
+                  <th>個数</th>
+                  <th>小計</th>
+                </tr>
+                <tr>
+                  <!--<td>%= f.name %></td>-->
+                  <td><%= f.taxed_price %></td>
+                  <td><%= f.amount %></td>
+                  <td><%= f.taxed_price * f.amount %>円</td>
+                </tr>
+              </table>
+          </section>
+        <% end %>
+      </div>
+    </div>
+  </div>

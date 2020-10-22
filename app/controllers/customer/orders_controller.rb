@@ -1,20 +1,23 @@
 class Customer::OrdersController < ApplicationController
   def index
-    @orders = Order.all
+     @orders = Order.all
+     @order = OrderProduct.all
   end
 
   def show
      @order = Order.find(params[:id])
+     @orders = Order.all
+     @order_product = OrderProduct.all
   end
 
   def new
-     @order = Order.new
+    @order = Order.new
   end
 
   def create
      @order = Order.new(params[:id])
     if @order.save
-       redirect_to confirm
+       redirect_to comfirm
     else
        @order = Order.new
        render new
@@ -22,6 +25,8 @@ class Customer::OrdersController < ApplicationController
   end
 
   def confirm
+      @orders = Order.all
+      @order_product = OrderProduct.all
   end
 
   def complete
