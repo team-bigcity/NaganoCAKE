@@ -1,13 +1,14 @@
 class Customer::OrdersController < ApplicationController
   def index
-     @orders = Order.all
+     @orders = Order.all.order("created_at DESC")
      @order = OrderProduct.all
+     @order_product = @order
   end
 
   def show
      @order = Order.find(params[:id])
      @orders = Order.all
-     @order_product = OrderProduct.all
+     @order_product = @order.order_products
   end
 
   def new
@@ -20,7 +21,7 @@ class Customer::OrdersController < ApplicationController
        redirect_to comfirm
     else
        @order = Order.new
-       render new
+       render :new
     end
   end
 

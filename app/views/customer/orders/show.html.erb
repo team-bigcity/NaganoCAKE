@@ -36,9 +36,12 @@
             <table class="table">
               <tr>
                 <td>商品合計</td>
-                <% @order_product .each do |f| %>
-                <td><%=f.taxed_price * f.amount %>円</td>
-                <% end %>
+                <td><% sum = 0 %>
+                    <% @order_product.each do |f| %>
+                    <% sum += f.taxed_price * f.amount %>
+                    <% end %>
+                    <%= sum.to_s(:delimited) %>円
+                </td>
               </tr>
               <tr>
                 <td>配送料</td>
@@ -48,9 +51,9 @@
               </tr>
               <tr>
                 <td>ご請求額</td>
-                <% @order_product .each do |f| %>
-                <td><%= f.taxed_price * f.amount %>円</td>
-                <% end %>
+                <td>
+                  <%= (sum + @order.shipping_cost).to_s(:delimited) %>円
+                </td>
               </tr>
             </table>
         </section>
@@ -59,7 +62,6 @@
     </div>
     <div class="row">
       <div class="col-lg-6">
-        <% @order_product .each do |f| %>
           <section>
               <h3>注文内容</h3>
               <table class="table">
@@ -69,15 +71,16 @@
                   <th>個数</th>
                   <th>小計</th>
                 </tr>
+                <% @order_product.each do |f| %>
                 <tr>
-                  <!--<td>%= f.name %></td>-->
+                  <td><%= f.product.name %></td>
                   <td><%= f.taxed_price %></td>
                   <td><%= f.amount %></td>
                   <td><%= f.taxed_price * f.amount %>円</td>
                 </tr>
+                <% end %>
               </table>
           </section>
-        <% end %>
       </div>
     </div>
   </div>
