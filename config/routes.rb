@@ -21,11 +21,9 @@ Rails.application.routes.draw do
 
     resources :customers, only: [:show, :edit, :index, :update]
 
-    resources :genres, only: [:index, :create, :edit]
-    patch 'genres/:id', to: 'genres#update'
+    resources :genres, only: [:index, :create, :edit, :update]
 
-    resources :products, except: [:destroy, :update]
-    patch 'products/:id', to: 'products#update'
+    resources :products, except: [:destroy]
   end
 
   #顧客
@@ -33,7 +31,7 @@ Rails.application.routes.draw do
     get '/about', to: 'homes#about'
 
     resources :addresses, only: [:index, :create, :edit, :destroy]
-    patch 'addresses/:id/update', to: 'addresses#update', as: 'addresss_update'
+    patch 'addresses/:id/update', to: 'addresses#update', as: 'addresses_update'
 
     resources :products, only: [:index, :show]
     root 'products#top'
