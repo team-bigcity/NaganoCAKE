@@ -1,4 +1,4 @@
-![NaganoCAKEロゴ](images/logo.jpg "logo")
+![NaganoCAKEロゴ](https://www.designevo.com/logo-maker/log.jpg "ロゴ")
 # ながのCAKE
 
 # 概要
@@ -105,7 +105,7 @@ InstagramのDMやメールで通販の注文を受けていたが、情報管理
 # 使用言語
 * HTML&CSS
 * Ruby
-* フレームワーク
+* フレームワーク  
     ○ Ruby on rails (5.2.4.4)
 
 # Gem
