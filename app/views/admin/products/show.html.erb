@@ -12,23 +12,23 @@
                 </div>
                 <div class="col-xs-8">
                     <div>
-                        <p>商品名：<%= @product.name %></p>
+                        <p><strong>商品名：</strong><%= @product.name %></p>
                     </div>
                     <br></br>
                     <div>
-                        <p>商品説明：<%= @product.introduction %></p>
+                        <p><strong>商品説明：</strong><%= @product.introduction %></p>
                     </div>
                     <br></br>
                     <div>
-                        <p>ジャンル：<%= @product.genre.name %></p>
+                        <p><strong>ジャンル：</strong><%= @product.genre.name %></p>
                     </div>
                     <br></br>
                     <div>
-                        <p>税込価格(税抜価格)：<%= (1.1 * @product.non_taxed_price).floor.to_s(:delimited) %>(<%=@product.non_taxed_price.to_s(:delimited) %>)円</p>
+                        <p><strong>税込価格(税抜価格)：</strong><%= (1.1 * @product.non_taxed_price).floor.to_s(:delimited) %>(<%=@product.non_taxed_price.to_s(:delimited) %>)円</p>
                     </div>
                     <br></br>
                     <div>
-                        <p>販売ステータス：
+                        <p><strong>販売ステータス：</strong>
                         <% if @product.is_active == true %>
           			        <i>販売中</i>
           			    <% elsif @product.is_active == false %>

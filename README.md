@@ -1,4 +1,4 @@
-![NaganoCAKEロゴ](https://www.designevo.com/logo-maker/log.jpg "ロゴ")
+![NaganoCAKEロゴ](images/logo.jpg "logo")
 # ながのCAKE
 
 # 概要
