@@ -2,7 +2,7 @@ class OrderProduct < ApplicationRecord
   belongs_to :order
   belongs_to :product
   
-  validates :taxed_price, presence: true
+  # validates :taxed_price, presence: true
   validates :amount, presence: true
   validates :making_status, presence: true
   

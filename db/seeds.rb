@@ -21,11 +21,10 @@
   )
 
   Admin.create!(
-
-    email: 'admin@admin.com', 
+    email: 'admin@admin.com',
     password: 'adminadmin'
     )
-  
+
 
   Order.create!(
     id: 1,
@@ -63,7 +62,7 @@
     id: 1,
     order_id: 1,
     product_id: 1,
-    taxed_price: 1080,
+    taxed_price: 0,
     amount: 2,
     making_status: 0
     )
@@ -72,21 +71,42 @@
     id: 2,
     order_id: 1,
     product_id: 2,
-    taxed_price: 216,
+    taxed_price: 0,
     amount: 5,
     making_status: 3
     )
-  
+
   CartProduct.create!(
     id: 1,
     customer_id: 1,
     product_id: 1,
     amount: 3
     )
-    
+
   CartProduct.create!(
     id: 2,
     customer_id: 1,
     product_id: 2,
     amount: 5
+    )
+
+  Genre.create!(
+    id: 1,
+    name: "ケーキ",
+    is_active: true
+    )
+  Genre.create!(
+    id: 2,
+    name: "プリン",
+    is_active: true
+    )
+  Genre.create!(
+    id: 3,
+    name: "焼き菓子",
+    is_active: true
+    )
+  Genre.create!(
+    id: 4,
+    name: "キャンディ",
+    is_active: true
     )
