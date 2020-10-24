@@ -49,7 +49,7 @@ Rails.application.routes.draw do
     get 'customers/destroy_page', to: 'customers#destroy_page'
     patch 'customers/leave', to: 'customers#leave', as: 'customers_leave'
     get 'customers/my_page', to: 'customers#my_page'
-    patch '/customers/profile_update', to: 'customers#update', as: 'customers_update'
+    patch 'customers/profile_update', to: 'customers#update', as: 'customers_update'
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

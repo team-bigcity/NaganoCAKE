@@ -16,6 +16,9 @@
                   <% end %>
                   <p><%= product.name %></p>
                   <p>¥<%= (product.non_taxed_price*1.1).floor.to_s(:delimited) %></p>
+                  <% if product.is_active == false %>
+                  <p class="product-is-active">売り切れ</p>
+                  <% end %>
                 </div>
               <% end %>
       	    </div>

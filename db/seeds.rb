@@ -188,3 +188,82 @@ Product.create!(
     product_id: 2,
     amount: 5
     )
+
+Order.create!(
+    id: 2,
+    customer_id: 1,
+    postcode: 1500041,
+    address: '東京都渋谷区神南1丁目19-11パークスウェースクエア2 4階',
+    name: '山田花子',
+    shipping_cost: 800,
+    payment_method: 1,
+    total_payment: 800,
+    status: 0
+    )
+
+  OrderProduct.create!(
+    id: 3,
+    order_id: 2,
+    product_id: 1,
+    taxed_price: 0,
+    amount: 2,
+    making_status: 2
+    )
+
+  OrderProduct.create!(
+    id: 4,
+    order_id: 2,
+    product_id: 3,
+    taxed_price: 0,
+    amount: 6,
+    making_status: 2
+    )
+
+  OrderProduct.create!(
+    id: 5,
+    order_id: 2,
+    product_id: 9,
+    taxed_price: 0,
+    amount: 8,
+    making_status: 2
+    )
+
+  OrderProduct.create!(
+    id: 6,
+    order_id: 2,
+    product_id: 6,
+    taxed_price: 0,
+    amount: 2,
+    making_status: 2
+    )
+
+  CartProduct.create!(
+    id: 3,
+    customer_id: 1,
+    product_id: 1,
+    amount: 2
+    )
+
+  CartProduct.create!(
+    id: 4,
+    customer_id: 1,
+    product_id: 3,
+    amount: 6
+    )
+    
+  CartProduct.create!(
+    id: 5,
+    customer_id: 1,
+    product_id: 9,
+    amount: 8
+    )
+
+  CartProduct.create!(
+    id: 6,
+    customer_id: 1,
+    product_id: 6,
+    amount: 2
+    )
+    
+    
+    
