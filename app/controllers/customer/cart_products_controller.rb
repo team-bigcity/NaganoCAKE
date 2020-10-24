@@ -4,6 +4,10 @@ class Customer::CartProductsController < ApplicationController
   end
 
   def create
+    @cart_product = CartProduct.new(cart_product_params)
+    @cart_product.customer_id = current_customer.id
+    @cart_product.save
+    redirect_to cart_products_path
   end
 
   def update
@@ -26,7 +30,7 @@ class Customer::CartProductsController < ApplicationController
   
   private
   def cart_product_params
-    params.require(:cart_product).permit(:amount)
+    params.require(:cart_product).permit(:amount, :product_id)
   end
   
 end

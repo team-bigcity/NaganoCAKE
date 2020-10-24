@@ -31,7 +31,7 @@ Rails.application.routes.draw do
     get '/about', to: 'homes#about'
 
     resources :addresses, only: [:index, :create, :edit, :destroy]
-    patch 'addresses/:id/update', to: 'addresses#update', as: 'addresss_update'
+    patch 'addresses/:id/update', to: 'addresses#update', as: 'addresses_update'
 
     resources :products, only: [:index, :show]
     root 'products#top'

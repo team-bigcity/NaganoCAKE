@@ -6,7 +6,7 @@ class Customer::ProductsController < ApplicationController
   end
 
   def index
-    # @product = Product.find(params[:id])
+    
     @products = Product.all.page(params[:page]).per(8)
     @genres = Genre.where(is_active: true)
   end
