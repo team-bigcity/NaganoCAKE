@@ -1,7 +1,11 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
     <nav class='nav navbar-nav navbar-left' >
-      <h2 class="default">Logo</h2>
+      <h2 class="default">
+        <%= link_to root_path do %>
+          <%= image_tag "No_Image.jpg", size:'100x50'%>
+        <% end %>
+      </h2>
     </nav>
 
     <nav>
@@ -15,9 +19,9 @@
           <li><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "glyphicon glyphicon-log-out logout" %></li>
           <!--adminのheader-->
         <% elsif admin_signed_in?  %>
-          <li><%= link_to "商品一覧",admin_orders_path, class: "glyphicon glyphicon-gift" %></li>
+          <li><%= link_to "商品一覧",admin_products_path, class: "glyphicon glyphicon-gift" %></li>
           <li><%= link_to "会員一覧",admin_customers_path, class: "glyphicon glyphicon-user"%></li>
-          <li><%= link_to "注文履歴一覧",orders_path, class: "glyphicon glyphicon-list-alt"%></li>
+          <li><%= link_to "注文履歴一覧",admin_orders_path, class: "glyphicon glyphicon-list-alt"%></li>
           <li><%= link_to "ジャンル一覧",admin_genres_path, class: "glyphicon glyphicon-th-list" %></li>
           <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "glyphicon glyphicon-log-out logout" %></li>
           <nav class='nav navbar-nav navbar-right' >
