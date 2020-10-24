@@ -25,51 +25,6 @@
     password: 'adminadmin'
     )
 
-
-  Order.create!(
-    id: 1,
-    customer_id: 1,
-    postcode: 1500041,
-    address: '東京都渋谷区神南1丁目19-11パークスウェースクエア2 4階',
-    name: '山田花子',
-    shipping_cost: 800,
-    payment_method: 1,
-    total_payment: 800,
-    status: 0
-    )
-
-  OrderProduct.create!(
-    id: 1,
-    order_id: 1,
-    product_id: 1,
-    taxed_price: 0,
-    amount: 2,
-    making_status: 0
-    )
-
-  OrderProduct.create!(
-    id: 2,
-    order_id: 1,
-    product_id: 2,
-    taxed_price: 0,
-    amount: 5,
-    making_status: 3
-    )
-
-  CartProduct.create!(
-    id: 1,
-    customer_id: 1,
-    product_id: 1,
-    amount: 3
-    )
-
-  CartProduct.create!(
-    id: 2,
-    customer_id: 1,
-    product_id: 2,
-    amount: 5
-    )
-
   Genre.create!(
     id: 1,
     name: "ケーキ",
@@ -91,7 +46,7 @@
     is_active: true
     )
 
-Product.create!(
+  Product.create!(
     genre_id: 1,
     image_id: 1,
     name: '美味しいケーキ',
@@ -117,7 +72,7 @@ Product.create!(
   non_taxed_price: '1000',
   is_active: 'true'
   )
-  
+
   Product.create!(
   name: 'チーズケーキ',
   genre_id: '1',
@@ -126,7 +81,7 @@ Product.create!(
   non_taxed_price: '800',
   is_active: 'true'
   )
-  
+
   Product.create!(
   name: 'チョコケーキ',
   genre_id: '1',
@@ -135,7 +90,7 @@ Product.create!(
   non_taxed_price: '900',
   is_active: 'true'
   )
-  
+
   Product.create!(
   name: 'ホールケーキ',
   genre_id: '1',
@@ -144,7 +99,7 @@ Product.create!(
   non_taxed_price: '1200',
   is_active: 'true'
   )
-  
+
   Product.create!(
   name: 'シフォンケーキ',
   genre_id: '1',
@@ -153,7 +108,7 @@ Product.create!(
   non_taxed_price: '700',
   is_active: 'true'
   )
-  
+
   Product.create!(
   name: 'マフィン',
   genre_id: '2',
@@ -162,7 +117,7 @@ Product.create!(
   non_taxed_price: '500',
   is_active: 'true'
   )
-  
+
   Product.create!(
   name: 'マカロン',
   genre_id: '2',
@@ -171,7 +126,7 @@ Product.create!(
   non_taxed_price: '500',
   is_active: 'true'
   )
-  
+
   Product.create!(
   name: 'クッキー',
   genre_id: '2',
@@ -180,7 +135,7 @@ Product.create!(
   non_taxed_price: '400',
   is_active: 'true'
   )
-  
+
   Product.create!(
   name: 'マドレーヌ',
   genre_id: '2',
@@ -189,3 +144,41 @@ Product.create!(
   non_taxed_price: '600',
   is_active: 'true'
   )
+  Order.create!(
+    customer_id: 1,
+    postcode: 1500041,
+    address: '東京都渋谷区神南1丁目19-11パークスウェースクエア2 4階',
+    name: '山田花子',
+    shipping_cost: 800,
+    payment_method: 1,
+    total_payment: 4040,
+    status: 0
+    )
+
+  OrderProduct.create!(
+    order_id: 1,
+    product_id: 1,
+    taxed_price: 0,
+    amount: 2,
+    making_status: 0
+    )
+
+  OrderProduct.create!(
+    order_id: 1,
+    product_id: 2,
+    taxed_price: 0,
+    amount: 5,
+    making_status: 3
+    )
+
+  CartProduct.create!(
+    customer_id: 1,
+    product_id: 1,
+    amount: 3
+    )
+
+  CartProduct.create!(
+    customer_id: 1,
+    product_id: 2,
+    amount: 5
+    )

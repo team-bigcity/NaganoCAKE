@@ -10,13 +10,13 @@
                   <th>小計</th>
                 </tr>
               </thead>
-              <% @order_product.each do |f|%>
+              <% @order_product.each do |order_product|%>
                 <tbody>
                   <tr>
-                    <td><%= f.product.name %></td>
-                    <td><%= f.taxed_price %></td>
-                    <td><%= f.amount %></td>
-                    <td><%= f.taxed_price * f.amount %>円</td>
+                    <td><%= order_product.product.name %></td>
+                    <td><%= ((order_product.product.non_taxed_price * 1.1).floor).to_s(:delimited) %></td>
+                    <td><%= order_product.amount %></td>
+                    <td><%= ((order_product.product.non_taxed_price * order_product.amount * 1.1).floor).to_s(:delimited)%>円</td>
                   </tr>
                 </tbody>
               <% end %>
@@ -33,10 +33,11 @@
               <tr>
                 <th>商品合計</th>
                 <td><% sum = 0 %>
-                    <% @order_product.each do |f| %>
-                    <% sum += f.taxed_price * f.amount %>
-                    <% end %>
-                    <%= sum.to_s(:delimited) %>円</td>
+                  <% @order_product.each do |order_product| %>
+                  <% sum += order_product.product.non_taxed_price * order_product.amount %>
+                  <% end %>
+                  <%= (sum = (sum * 1.1).floor).to_s(:delimited) %>円
+                </td>
               </tr>
               <tr>
                 <th>請求金額</th>

@@ -1,4 +1,5 @@
 class Customer::OrdersController < ApplicationController
+  before_action :authenticate_customer!
   def index
      @orders = Order.all.order("created_at DESC")
      @order = OrderProduct.all
@@ -18,7 +19,7 @@ class Customer::OrdersController < ApplicationController
   def create
      @order = Order.new(params[:id])
     if @order.save
-       redirect_to comfirm
+       redirect_to orders_comfirm_path
     else
        @order = Order.new
        render :new
