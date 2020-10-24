@@ -1,29 +1,28 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-9">
-        <% @orders.each do |f| %>
         <h2>注文履歴詳細</h2>
         <section>
           <h3>注文情報</h3>
           <table class="table">
             <tr>
               <td>注文日</td>
-              <td><%= f.created_at.strftime("%Y年%m月%d日") %></td>
+              <td><%= @order.created_at.strftime("%Y年%m月%d日") %></td>
             </tr>
             <tr>
               <td>配送先</td>
-              <td>〒<%= f.postcode %><br>
-                    <%= f.address %><br>
-                    <%= f.name %>
+              <td>〒<%= @order.postcode %><br>
+                    <%= @order.address %><br>
+                    <%= @order.name %>
               </td>
             </tr>
             <tr>
               <td>支払方法</td>
-              <td><%= f.payment_method %></td>
+              <td><%= @order.payment_method %></td>
             </tr>
             <tr>
               <td>ステータス</td>
-              <td><%= f.status %></td>
+              <td><%= @order.status %></td>
             </tr>
           </table>
         </section>
@@ -57,7 +56,6 @@
               </tr>
             </table>
         </section>
-        <% end %>
       </div>
     </div>
     <div class="row">

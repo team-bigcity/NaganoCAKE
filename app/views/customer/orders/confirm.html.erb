@@ -1,3 +1,6 @@
+  <%= form_with model: @order, url: orders_path,method: :post, local: true do |f| %>
+
+
     <h1>注文情報確認</h1>
       <div class="row">
           <div class="col-lg-8">
@@ -10,38 +13,39 @@
                   <th>小計</th>
                 </tr>
               </thead>
-              <% @order_product.each do |order_product|%>
+              <% @carts.each do |cart_product|%>
                 <tbody>
                   <tr>
-                    <td><%= order_product.product.name %></td>
-                    <td><%= ((order_product.product.non_taxed_price * 1.1).floor).to_s(:delimited) %></td>
-                    <td><%= order_product.amount %></td>
-                    <td><%= ((order_product.product.non_taxed_price * order_product.amount * 1.1).floor).to_s(:delimited)%>円</td>
+                    <td><%= cart_product.product.name %></td>
+                    <td><%= ((cart_product.product.non_taxed_price * 1.1).floor).to_s(:delimited) %></td>
+                    <td><%= cart_product.amount %></td>
+                    <td><%= ((cart_product.product.non_taxed_price * cart_product.amount * 1.1).floor).to_s(:delimited)%>円</td>
                   </tr>
                 </tbody>
               <% end %>
             </table>
           </div>
 
-        <% @orders.each do |f| %>
           <div class="col-lg-3">
             <table class="table">
               <tr>
                 <th>送料</th>
-                <td><%= f.shipping_cost %>円</td>
+                <td>800円</td>
               </tr>
               <tr>
                 <th>商品合計</th>
                 <td><% sum = 0 %>
-                  <% @order_product.each do |order_product| %>
-                  <% sum += order_product.product.non_taxed_price * order_product.amount %>
+                  <% @carts.each do |cart_product| %>
+                  <% sum += cart_product.product.non_taxed_price * cart_product.amount %>
                   <% end %>
-                  <%= (sum = (sum * 1.1).floor).to_s(:delimited) %>円
+                  <% (sum = (sum * 1.1).floor).to_s(:delimited)%>
+                  <%= sum %>円
                 </td>
               </tr>
               <tr>
                 <th>請求金額</th>
-                <td> <%= (sum + f.shipping_cost).to_s(:delimited) %>円</td>
+                <td><% sum += 800 %><%= sum.to_s(:delimited) %>円</td>
+                <% sum %>
               </tr>
             </table>
           </div>
@@ -49,19 +53,27 @@
             <table>
               <tr>
                 <th>支払方法</th>
-                <td><%= f.payment_method %></td>
+                <td><%= @order.payment_method %></td>
               </tr>
               <tr>
                 <th>お届け先</th>
-                <td>〒<%= f.postcode %><br>
-                          <%= f.address %><br>
-                          <%= f.name %> 様
+                <td>〒<%= @order.postcode %><br>
+                      <%= @order.address %><br>
+                      <%= @order.name %> 様
                 </td>
               </tr>
             </table>
             <div class="col-lg-3">
-             <%= link_to "購入を確定する", orders_complete_path, class:"btn btn-success" %>
+             <%= f.submit "購入を確定する", class:"btn btn-success" %>
             </div>
           </div>
-        <% end %>
       </div>
+  <%= f.hidden_field :name, :value => @order.name %>
+  <%= f.hidden_field :address, :value => @order.address %>
+  <%= f.hidden_field :postcode, :value => @order.postcode %>
+  <%= f.hidden_field :payment_method, :value => @order.payment_method %>
+  <%= f.hidden_field :total_payment, :value => sum %>
+
+
+ <% end %>
+
