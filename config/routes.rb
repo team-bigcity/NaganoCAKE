@@ -44,13 +44,12 @@ Rails.application.routes.draw do
     get 'orders/complete'
     get 'orders/confirm'
     resources :orders, only: [:index, :show, :new, :create,]
-
-    resources :customers, only: [:edit]
+  
+    get 'customers/profile_edit', to: 'customers#edit', as: 'customers_edit'
     get 'customers/destroy_page', to: 'customers#destroy_page'
-    patch 'customers/leave', to: 'customers#leave'
-    get 'customers/my_page'
-    patch '/customers/:id/update', to: 'customers#update', as: 'customers_update'
-    put "/customers/:id/hide" => "customers#hide", as: 'customers_hide'
+    patch 'customers/leave', to: 'customers#leave', as: 'customers_leave'
+    get 'customers/my_page', to: 'customers#my_page'
+    patch '/customers/profile_update', to: 'customers#update', as: 'customers_update'
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
