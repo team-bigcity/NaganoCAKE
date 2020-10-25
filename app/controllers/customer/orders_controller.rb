@@ -35,13 +35,6 @@ class Customer::OrdersController < ApplicationController
        @order = Order.new
        render :new
     end
-    #ordered_productにデータ挿入
-		# 	ordered_product = []
-		# 	@ordered_product = @current_customer.cart_products
-		# 		@ordered_product.each do |op|
-		# 			 ordered_product << @order_product.build(product_id: op.product_id, price: op.taxed_price, amount: op.amount, making_status: op)
-		# 		end
-		# 	OrderedProduct.import order_product
   end
 
   def confirm
@@ -84,4 +77,3 @@ class Customer::OrdersController < ApplicationController
   end
 
 end
- # binding.pry
