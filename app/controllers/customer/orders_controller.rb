@@ -3,7 +3,7 @@ class Customer::OrdersController < ApplicationController
 	before_action :authenticate_customer!
 
   def index
-     @orders = Order.all.order("created_at DESC")
+     @orders = Order.all.order(current_customer)
      @order = OrderProduct.all
      @order_product = @order
   end
@@ -21,7 +21,7 @@ class Customer::OrdersController < ApplicationController
       @order = Order.new(order_params)
       @order.customer_id = current_customer.id
     if  @order.save
-    #   @cart = CartProduct.find_by(cucustomer_id :@customer.id, product_id :@product.id)
+      @cart = CartProduct.find_by()
     #   @cart.each do |cart|
     #   order_product = OrderProduct.new(order_id :order.id)
     #   order_product.taxed_price = cart.product.non_taxed_price
@@ -47,7 +47,6 @@ class Customer::OrdersController < ApplicationController
   end
 
   def confirm
-      # binding.pry
       @carts = CartProduct.all
       @order = Order.new
       @order.payment_method = params[:order][:payment_method]
@@ -65,10 +64,11 @@ class Customer::OrdersController < ApplicationController
         @address.name = @order.name
         @address.postcode = @order.postcode
         @address.address = @order.address
+        
         @address.save
-        # @order.name =
-        # @order.postcode =
-        # @order.address =
+        @order.name = @address.name
+        # @order.postcode = @address.postcode
+        # @order.address = @address.address
     else
         @order = Order.new
         render :new
@@ -85,3 +85,4 @@ class Customer::OrdersController < ApplicationController
   end
 
 end
+ # binding.pry
