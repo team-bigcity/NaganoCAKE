@@ -187,3 +187,4 @@
     customer_id: 1,
     product_id: 2,
     amount: 5
+  )

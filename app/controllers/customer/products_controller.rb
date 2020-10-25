@@ -1,7 +1,7 @@
 class Customer::ProductsController < ApplicationController
   def top
-    @rank_products = OrderProduct.find(OrderProduct.group(:product_id).order('count(amount) desc').limit(4).pluck(:id))
-    # @all_ranks = Product.find(OrderProduct.group(:product_id).order('count(product_id) desc').limit(4).pluck(:product_id))
+    rank_order_product_product_ids = OrderProduct.group(:product_id).order(amount: "DESC").limit(4).pluck(:product_id)
+    @rank_products = Product.where(id: rank_order_product_product_ids).order_as_specified(id: rank_order_product_product_ids)
     @genres = Genre.where(is_active: true)
     @products = Product.all.page(params[:page]).per(4)
     # @product = Product.find(params[:id])
