@@ -36,21 +36,21 @@ Rails.application.routes.draw do
     resources :products, only: [:index, :show]
     root 'products#top'
     
-    
+    delete 'cart_products/destroy_all', to: 'cart_products#destroy_all'
     resources :cart_products, only: [:index, :create, :destroy]
     patch 'cart_products/:id', to: 'cart_products#update'
-    delete 'cart_products/destroy_all', to: 'cart_products#destroy_all'
     
     get 'orders/complete'
-    get 'orders/confirm'
+    post 'orders/confirm'
     resources :orders, only: [:index, :show, :new, :create,]
 
-    resources :customers, only: [:edit]
+   
+    get 'customers/profile_edit', to: 'customers#edit', as: 'customers_edit'
     get 'customers/destroy_page', to: 'customers#destroy_page'
-    patch 'customers/leave', to: 'customers#leave'
-    get 'customers/my_page'
-    patch '/customers/:id/update', to: 'customers#update', as: 'customers_update'
-    put "/customers/:id/hide" => "customers#hide", as: 'customers_hide'
+    patch 'customers/leave', to: 'customers#leave', as: 'customers_leave'
+    get 'customers/my_page', to: 'customers#my_page'
+    patch 'customers/profile_update', to: 'customers#update', as: 'customers_update'
   end
+  get 'search' => 'searches#search'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -64,8 +64,8 @@
   Product.create!(
   genre_id: 1,
   image_id: '',
-  name: 'ロールケーキ',
-  introduction: 'とにかくおいしい',
+  name: 'イチゴケーキ',
+  introduction: 'イチゴケーキです。',
   non_taxed_price: 1000,
   is_active: true
   )
@@ -74,7 +74,7 @@
   genre_id: 1,
   image_id: '',
   name: 'バースデーケーキ',
-  introduction: 'とにかくまずい',
+  introduction: 'バースデーケーキです。',
   non_taxed_price: 3000,
   is_active: true
   )
@@ -83,7 +83,7 @@
   name: 'ショートケーキ',
   genre_id: 1,
   image_id: '',
-  introduction: 'aaa',
+  introduction: 'ショートケーキです。',
   non_taxed_price: 100,
   is_active: 'true'
   )
@@ -92,7 +92,7 @@
   name: 'チーズケーキ',
   genre_id: '1',
   image_id: '',
-  introduction: '2222',
+  introduction: 'チーズケーキです。',
   non_taxed_price: '800',
   is_active: 'true'
   )
