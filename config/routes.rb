@@ -39,7 +39,7 @@ Rails.application.routes.draw do
     delete 'cart_products/destroy_all', to: 'cart_products#destroy_all'
     resources :cart_products, only: [:index, :create, :destroy]
     patch 'cart_products/:id', to: 'cart_products#update'
-    
+
     get 'orders/complete'
     post 'orders/confirm'
     resources :orders, only: [:index, :show, :new, :create,]
@@ -50,6 +50,7 @@ Rails.application.routes.draw do
     get 'customers/my_page', to: 'customers#my_page'
     patch 'customers/profile_update', to: 'customers#update', as: 'customers_update'
   end
+  
   get 'search' => 'searches#search'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
