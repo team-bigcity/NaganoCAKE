@@ -1,6 +1,5 @@
     <h1>注文情報確認</h1>
       <div class="row">
-        <% @order_product.each do |f|%>
           <div class="col-lg-8">
             <table class="table">
               <thead class="table-title">
@@ -11,17 +10,19 @@
                   <th>小計</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <!--<td>%= f.name %></td>-->
-                  <td><%= f.taxed_price %></td>
-                  <td><%= f.amount %></td>
-                  <td><%= f.taxed_price * f.amount %>円</td>
-                </tr>
-              </tbody>
+              <% @order_product.each do |f|%>
+                <tbody>
+                  <tr>
+                    <td><%= f.product.name %></td>
+                    <td><%= f.taxed_price %></td>
+                    <td><%= f.amount %></td>
+                    <td><%= f.taxed_price * f.amount %>円</td>
+                  </tr>
+                </tbody>
+              <% end %>
             </table>
           </div>
-        <% end %>
+
         <% @orders.each do |f| %>
           <div class="col-lg-3">
             <table class="table">
@@ -31,11 +32,15 @@
               </tr>
               <tr>
                 <th>商品合計</th>
-                <td><%= f.total_payment %>円</td>
+                <td><% sum = 0 %>
+                    <% @order_product.each do |f| %>
+                    <% sum += f.taxed_price * f.amount %>
+                    <% end %>
+                    <%= sum.to_s(:delimited) %>円</td>
               </tr>
               <tr>
                 <th>請求金額</th>
-                <td><%= f.total_payment + f.shipping_cost %>円</td>
+                <td> <%= (sum + f.shipping_cost).to_s(:delimited) %>円</td>
               </tr>
             </table>
           </div>
@@ -49,10 +54,13 @@
                 <th>お届け先</th>
                 <td>〒<%= f.postcode %><br>
                           <%= f.address %><br>
-                          <%= f.name %> 様</td>
+                          <%= f.name %> 様
+                </td>
               </tr>
             </table>
+            <div class="col-lg-3">
              <%= link_to "購入を確定する", orders_complete_path, class:"btn btn-success" %>
+            </div>
           </div>
         <% end %>
       </div>

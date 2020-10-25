@@ -50,7 +50,7 @@
               <td><%= order_product.product.name %></td>
               <td><%= order_product.taxed_price.to_s(:delimited) %></td>
               <td><%= order_product.amount %></td>
-              <td><%= (order_product.taxed_price * order_product.amount).to_s(:delimited) %></td>
+              <td><%= ((order_product.taxed_price * order_product.amount).floor).to_s(:delimited) %></td>
               <%= form_with model:order_product, url: admin_order_product_path(order_product), local: true do |f| %>
               <td>
                 <%= f.select :making_status, OrderProduct.making_statuses.keys, {"製作不可": '0', "製作待ち": '1', "製作中": '2', "製作完了": '3'}, value: order_product.making_status %>

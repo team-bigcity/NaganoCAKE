@@ -1,4 +1,6 @@
 class Customer::AddressesController < ApplicationController
+  before_action :authenticate_customer!
+  
   def index
     @customer = current_customer
     @addresses = @customer.addresses
@@ -20,6 +22,7 @@ class Customer::AddressesController < ApplicationController
 
   def edit
     @address = Address.find(params[:id])
+    @customer = current_customer
   end
 
   def update

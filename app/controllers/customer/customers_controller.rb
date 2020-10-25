@@ -1,13 +1,16 @@
 class Customer::CustomersController < ApplicationController
+  before_action :authenticate_customer!
     
   def my_page
     @customer = current_customer
-    # @customer = Customer.find(params[:id])
   end
   
   def edit
     @customer = Customer.find(params[:id])
-    # @customer = current_customer
+    unless current_customer.nil? || current_customer.id == @customer.id
+      flash[:warning] = "アクセス権がありません"
+      redirect_to edit_customer_path(current_customer)
+    end
   end
   
   def update
