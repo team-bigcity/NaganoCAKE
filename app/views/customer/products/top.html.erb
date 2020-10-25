@@ -20,11 +20,11 @@
               <% @rank_products.each do |rank_product| %>
                 <div class="box" style="float:left; margin-right:120px;">
                   <%= link_to product_path(rank_product) do %>
-                    <%= attachment_image_tag rank_product.product, :image, size:'200x150', fallback: "No_Image.jpg", size:'200x150' %><br>
+                    <%= attachment_image_tag rank_product, :image, size:'200x150', fallback: "No_Image.jpg", size:'200x150' %><br>
                   <% end %>
-                  <p><%= rank_product.product.name %></p>
-                  <p>¥<%= (rank_product.product.non_taxed_price*1.1).floor.to_s(:delimited) %></p>
-                  <% if rank_product.product.is_active == false %>
+                  <p><%= rank_product.name %></p>
+                  <p>¥<%= (rank_product.non_taxed_price*1.1).floor.to_s(:delimited) %></p>
+                  <% if rank_product.is_active == false %>
                   <p class="product-is-active">売り切れ</p>
                   <% end %>
                 </div>

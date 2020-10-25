@@ -1,10 +1,10 @@
 class Product < ApplicationRecord
+  extend OrderAsSpecified
   has_many :cart_products
 
   has_many :order_products
 
   belongs_to :genre
-
   attachment :image
   validates :name, presence: true
   validates :introduction, presence: true
