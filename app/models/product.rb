@@ -9,6 +9,7 @@ class Product < ApplicationRecord
   validates :name, presence: true
   validates :introduction, presence: true
   validates :non_taxed_price, numericality: { only_integer: true }
+  validates :image, presence: true
 
   def self.search(word)
     Product.where(['name LIKE ?', "%#{word}%"])
