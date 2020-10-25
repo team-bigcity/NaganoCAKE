@@ -44,7 +44,6 @@ Rails.application.routes.draw do
     post 'orders/confirm'
     resources :orders, only: [:index, :show, :new, :create,]
 
-   
     get 'customers/profile_edit', to: 'customers#edit', as: 'customers_edit'
     get 'customers/destroy_page', to: 'customers#destroy_page'
     patch 'customers/leave', to: 'customers#leave', as: 'customers_leave'

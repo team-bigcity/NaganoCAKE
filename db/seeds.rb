@@ -25,7 +25,6 @@
     password: 'adminadmin'
     )
 
-
   Order.create!(
     id: 1,
     customer_id: 1,
@@ -37,7 +36,6 @@
     total_payment: 800,
     status: 0
     )
-
 
   Genre.create!(
     id: 1,
@@ -59,7 +57,6 @@
     name: "キャンディ",
     is_active: true
     )
-
 
   Product.create!(
   genre_id: 1,
@@ -160,7 +157,6 @@
   is_active: 'true'
   )
 
-
   OrderProduct.create!(
     id: 1,
     order_id: 1,
@@ -191,4 +187,3 @@
     customer_id: 1,
     product_id: 2,
     amount: 5
-    )

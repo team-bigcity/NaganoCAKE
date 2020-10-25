@@ -13,7 +13,7 @@
         　<!--customerのheader-->
         <% if customer_signed_in? %>
           <li class="default">ようこそ、<%= current_customer.last_name %>さん！</li>
-          <li><%= link_to "マイページ", customers_my_page_path(current_customer), class: "glyphicon glyphicon-home home" %></li>
+          <li><%= link_to "マイページ", customers_my_page_path, class: "glyphicon glyphicon-home home" %></li>
           <li><%= link_to "商品一覧", products_path, class: "glyphicon glyphicon-gift" %></li>
           <li><%= link_to "カート", cart_products_path, class: "glyphicon glyphicon-shopping-cart"%></li>
           <li><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "glyphicon glyphicon-log-out logout" %></li>
