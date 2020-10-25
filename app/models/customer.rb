@@ -20,5 +20,9 @@ class Customer < ApplicationRecord
   def active_for_authentication?
     super && (self.is_deleted == false)
   end
+  
+  def self.search(word)
+    Customer.where(['last_name LIKE ? OR first_name LIKE ? OR last_name_kana LIKE ? OR first_name_kana LIKE ?', "%#{word}%", "%#{word}%", "%#{word}%", "%#{word}%"])
+  end
 end
 

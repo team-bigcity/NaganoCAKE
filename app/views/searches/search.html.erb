@@ -1,3 +1,4 @@
+<% if @range == '2'%>
 <div class="body">
   <div class="container">
     <br></br>
@@ -5,12 +6,12 @@
     <br></br>
     <div class="row">
       <div class="col-xs-10 col-xs-offset-1">
-      <%= link_to new_admin_product_path, class: "btn btn-info pull-right" do %>
+      <%= link_to new_admin_product_path, data: {"turbolinks" => false}, class: "btn btn-info pull-right" do %>
       <i class="fas fa-plus"></i>
       <% end %>
       <br></br>
         <table class="table table-bordered">
-          <thead>
+          <thead bgcolor="#dcdcdc">
             <tr>
               <th>商品ID</th>
               <th>商品名</th>
@@ -52,3 +53,40 @@
     </div>
   </div>
 </div>
+<% else %>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12 center-block" style="margin: 20px 0 50px 0">
+      <h3 class='col-lg-10'>会員一覧</h3>
+    </div>
+    <div class="col-lg-12 center-block">
+      <table class='table table-hover table-inverse'>
+        <thead>
+          <tr bgcolor="#dcdcdc">
+            <th>会員ID</th>
+            <th>氏名</th>
+            <th>メールアドレス</th>
+            <th>ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @customers.each do |customer| %>
+            <tr>
+              <td><%= customer.id %></td>
+              <td><%= link_to admin_customer_path(customer) do %><%= customer.last_name %><%= customer.first_name %><% end %></td>
+              <td><%= customer.email %></td>
+              <td>
+                <% if customer.is_deleted == false %>
+                  <span class="panel panel-default">有効</span>
+                <% else %>
+                  <span class="panel panel-default">退会済み</span>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<% end %>

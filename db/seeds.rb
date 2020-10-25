@@ -25,6 +25,18 @@
     password: 'adminadmin'
     )
 
+  Order.create!(
+    id: 1,
+    customer_id: 1,
+    postcode: 1500041,
+    address: '東京都渋谷区神南1丁目19-11パークスウェースクエア2 4階',
+    name: '山田花子',
+    shipping_cost: 800,
+    payment_method: 1,
+    total_payment: 800,
+    status: 0
+    )
+
   Genre.create!(
     id: 1,
     name: "ケーキ",
@@ -47,29 +59,29 @@
     )
 
   Product.create!(
-    genre_id: 1,
-    image_id: 1,
-    name: '美味しいケーキ',
-    introduction: 'とにかくおいしい',
-    non_taxed_price: 1000,
-    is_active: true
-    )
+  genre_id: 1,
+  image_id: '',
+  name: 'イチゴケーキ',
+  introduction: 'イチゴケーキです。',
+  non_taxed_price: 1000,
+  is_active: true
+  )
 
   Product.create!(
-    genre_id: 1,
-    image_id: 2,
-    name: 'まずいケーキ',
-    introduction: 'とにかくまずい',
-    non_taxed_price: 200,
-    is_active: true
-    )
+  genre_id: 1,
+  image_id: '',
+  name: 'バースデーケーキ',
+  introduction: 'バースデーケーキです。',
+  non_taxed_price: 3000,
+  is_active: true
+  )
 
   Product.create!(
   name: 'ショートケーキ',
-  genre_id: '1',
+  genre_id: 1,
   image_id: '',
-  introduction: 'aaa',
-  non_taxed_price: '1000',
+  introduction: 'ショートケーキです。',
+  non_taxed_price: 100,
   is_active: 'true'
   )
 
@@ -77,7 +89,7 @@
   name: 'チーズケーキ',
   genre_id: '1',
   image_id: '',
-  introduction: '2222',
+  introduction: 'チーズケーキです。',
   non_taxed_price: '800',
   is_active: 'true'
   )
@@ -144,18 +156,9 @@
   non_taxed_price: '600',
   is_active: 'true'
   )
-  Order.create!(
-    customer_id: 1,
-    postcode: 1500041,
-    address: '東京都渋谷区神南1丁目19-11パークスウェースクエア2 4階',
-    name: '山田花子',
-    shipping_cost: 800,
-    payment_method: 1,
-    total_payment: 4040,
-    status: 0
-    )
 
   OrderProduct.create!(
+    id: 1,
     order_id: 1,
     product_id: 1,
     taxed_price: 0,
@@ -164,6 +167,7 @@
     )
 
   OrderProduct.create!(
+    id: 2,
     order_id: 1,
     product_id: 2,
     taxed_price: 0,
@@ -172,13 +176,14 @@
     )
 
   CartProduct.create!(
+    id: 1,
     customer_id: 1,
     product_id: 1,
     amount: 3
     )
 
   CartProduct.create!(
+    id: 2,
     customer_id: 1,
     product_id: 2,
     amount: 5
-    )
