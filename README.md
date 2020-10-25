@@ -1,4 +1,4 @@
-![NaganoCAKEロゴ](images/logo.jpg "logo")
+![NaganoCAKEのロゴ](https://user-images.githubusercontent.com/69787856/97099438-55968780-16cc-11eb-9278-fe2ea58d779e.jpg "")
 # ながのCAKE
 
 # 概要
