@@ -3,9 +3,7 @@ class Customer::OrdersController < ApplicationController
 	before_action :authenticate_customer!
 
   def index
-     @orders = Order.all
-     @order = OrderProduct.all
-     @order_product = @order
+     @orders = current_customer.orders
   end
 
   def show
@@ -38,7 +36,7 @@ class Customer::OrdersController < ApplicationController
   end
 
   def confirm
-      @carts = CartProduct.all
+      @carts = current_customer.cart_products
       @order = Order.new
       @order.customer_id = current_customer.id
       @order.payment_method = params[:order][:payment_method]
@@ -47,7 +45,7 @@ class Customer::OrdersController < ApplicationController
         @order.postcode = current_customer.postcode
         @order.address = current_customer.address
     elsif "登録済み住所から選択" == params[:order][:current_customer]
-        @address = Address.find_by(params[:Address])
+        @address = Address.find_by(params[:order][:address])
         @order.name = @address.name
         @order.postcode = @address.postcode
         @order.address = @address.address
