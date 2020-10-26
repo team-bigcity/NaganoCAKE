@@ -1,8 +1,8 @@
 class Customer::CartProductsController < ApplicationController
   before_action :authenticate_customer!
-  
+
   def index
-    @cart_products = CartProduct.all
+    @cart_products = CartProduct.where(customer_id: current_customer)
   end
 
   def create
@@ -29,10 +29,10 @@ class Customer::CartProductsController < ApplicationController
     @cart_products.destroy_all
     redirect_to cart_products_path
   end
-  
+
   private
   def cart_product_params
     params.require(:cart_product).permit(:amount, :product_id)
   end
-  
+
 end

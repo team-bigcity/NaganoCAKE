@@ -25,7 +25,6 @@ class Customer::SessionsController < Devise::SessionsController
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
 
-  
   def reject_customer
     @customer = Customer.find_by(email: params[:customer][:email].downcase)
     if @customer

@@ -36,8 +36,7 @@
                   <% @carts.each do |cart_product| %>
                   <% sum += cart_product.product.non_taxed_price * cart_product.amount %>
                   <% end %>
-                  <% (sum = (sum * 1.1).floor).to_s(:delimited)%>
-                  <%= sum %>円
+                  <%= (sum = (sum * 1.1).floor).to_s(:delimited)%>円
                 </td>
               </tr>
               <tr>

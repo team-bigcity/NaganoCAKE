@@ -27,7 +27,7 @@
             <div class="col-sm-offset-2 col-sm-10">
               <%= f.radio_button :current_customer, "登録済み住所から選択" %>
               <%= f.label :current_customer, "登録済み住所から選択" %><br>
-              <%= f.collection_select(:address_id, current_customer.addresses.all, :id, :name ) %>
+              <%= f.collection_select(:address_id, current_customer.addresses.all, :id, :name) %>
             </div>
           </div>
 

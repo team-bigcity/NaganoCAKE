@@ -7,34 +7,34 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
   Customer.create!(
-  id: 1,
   last_name: '山田',
   first_name: '花子',
   last_name_kana: 'ヤマダ',
   first_name_kana: 'ハナコ',
-  email: 'hoge@example.com',
+  email: 'aaa@aaa',
   postcode: 1500041,
   address: '東京都渋谷区神南1丁目19-11パークスウェースクエア2 4階',
   phone_number: '0368694700',
   password: 'aaaaaa',
   is_deleted: false
   )
+  
+  Customer.create!(
+  last_name: '田中',
+  first_name: '花子',
+  last_name_kana: 'タナカ',
+  first_name_kana: 'ハナコ',
+  email: 'bbb@bbb',
+  postcode: 1500041,
+  address: '東京都渋谷区神南1丁目19-11パークスウェースクエア2 4階',
+  phone_number: '0368694700',
+  password: 'bbbbbb',
+  is_deleted: false
+  )
 
   Admin.create!(
     email: 'admin@admin.com',
     password: 'adminadmin'
-    )
-
-  Order.create!(
-    id: 1,
-    customer_id: 1,
-    postcode: 1500041,
-    address: '東京都渋谷区神南1丁目19-11パークスウェースクエア2 4階',
-    name: '山田花子',
-    shipping_cost: 800,
-    payment_method: 1,
-    total_payment: 800,
-    status: 0
     )
 
   Genre.create!(
@@ -155,36 +155,4 @@
   introduction: 'マドレーヌです',
   non_taxed_price: '600',
   is_active: 'true'
-  )
-
-  OrderProduct.create!(
-    id: 1,
-    order_id: 1,
-    product_id: 1,
-    taxed_price: 0,
-    amount: 2,
-    making_status: 0
-    )
-
-  OrderProduct.create!(
-    id: 2,
-    order_id: 1,
-    product_id: 2,
-    taxed_price: 0,
-    amount: 5,
-    making_status: 3
-    )
-
-  CartProduct.create!(
-    id: 1,
-    customer_id: 1,
-    product_id: 1,
-    amount: 3
-    )
-
-  CartProduct.create!(
-    id: 2,
-    customer_id: 1,
-    product_id: 2,
-    amount: 5
   )

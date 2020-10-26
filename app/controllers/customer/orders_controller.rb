@@ -44,7 +44,7 @@ class Customer::OrdersController < ApplicationController
   #注文確認画面  if文で選択内容ごとの情報を
   def confirm
       #ログインユーザーのカートの中を全て表示
-     @carts = current_customer.cart_products
+      @carts = current_customer.cart_products
       @order = Order.new
       @order.customer_id = current_customer.id
       @order.payment_method = params[:order][:payment_method]
