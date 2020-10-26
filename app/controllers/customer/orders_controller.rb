@@ -43,19 +43,23 @@ class Customer::OrdersController < ApplicationController
 
   #注文確認画面  if文で選択内容ごとの情報を
   def confirm
-      @carts = CartProduct.all
+      #ログインユーザーのカートの中を全て表示
+     @carts = current_customer.cart_products
       @order = Order.new
       @order.customer_id = current_customer.id
       @order.payment_method = params[:order][:payment_method]
+      #自分の住所を選択した場合
     if "ご自身の住所" == params[:order][:current_customer]
       @order.name = current_customer.last_name
       @order.postcode = current_customer.postcode
       @order.address = current_customer.address
+      #登録済みの住所を選択した場合
     elsif "登録済み住所から選択" == params[:order][:current_customer]
       @address = Address.find(params[:order][:address_id])
       @order.name = @address.name
       @order.postcode = @address.postcode
       @order.address = @address.address
+      #新しく住所を記述した場合
     elsif "新しいお届け先"  == params[:order][:current_customer]
       @address = Address.new
       @address.name = params[:order][:name]
