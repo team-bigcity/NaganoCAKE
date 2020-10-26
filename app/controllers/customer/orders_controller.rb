@@ -2,24 +2,29 @@ class Customer::OrdersController < ApplicationController
   #ログインユーザーのみ閲覧可
 	before_action :authenticate_customer!
 
+  #ログインユーザー(current_customer)の履歴一覧
   def index
      @orders = current_customer.orders
   end
 
+  #履歴詳細
   def show
      @order = Order.find(params[:id])
      @order_product = @order.order_products
   end
 
+  #注文情報入力
   def new
     @order = Order.new
   end
 
+  #注文履歴の情報を作成
   def create
       @order = Order.new(order_params)
       @order.customer_id = current_customer.id
     if  @order.save!
       @carts = current_customer.cart_products
+      #カートの中の情報をひとつづつ保存
       @carts.each do |cart|
           order_product = OrderProduct.new(order_id: @order.id)
           order_product.taxed_price = cart.product.non_taxed_price
@@ -27,6 +32,7 @@ class Customer::OrdersController < ApplicationController
           order_product.product_id = cart.product_id
           order_product.save!
       end
+      #保存後カートの中を空にする
       @carts.destroy_all
        redirect_to orders_complete_path
     else
@@ -35,6 +41,7 @@ class Customer::OrdersController < ApplicationController
     end
   end
 
+  #注文確認画面  if文で選択内容ごとの情報を
   def confirm
       @carts = CartProduct.all
       @order = Order.new
@@ -65,11 +72,11 @@ class Customer::OrdersController < ApplicationController
     end
   end
 
+  #注文完了
   def complete
   end
 
   private
-
   def order_params
     params.require(:order).permit(:postcode,:address,:name,:payment_method,:status,:total_payment)
   end
