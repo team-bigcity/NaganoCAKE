@@ -4,7 +4,7 @@ class Customer::CartProductsController < ApplicationController
   def index
     @cart_products = CartProduct.where(customer_id: current_customer)
   end
-
+  
   def create
     @cart_product = CartProduct.new(cart_product_params)
     @cart_product.customer_id = current_customer.id
