@@ -2,24 +2,35 @@
   <div class="container-fluid">
   	</br>
     <div class="row">
-      <div class="col-xs-2">
+      <div class="col-xs-2" style="margin: 20px 0 50px 0">
         <%= render 'customer/products/sidebar', genres: @genres  %>
       </div>
       
       <div class="col-xs-10">
-      	<table>
-	      	<tr class="col-xs-6">
-					  <td><%= attachment_image_tag(@product, :image, :fill, 50, 50, fallback: "No_Image.jpg") %></div>
-					</tr>
-					<tr class="col-xs-6">
-					  <td><%= @product.name %><br/>
-					  		<%= @product.introduction %><br/>
-					 			<%= @product.(non_taxed_price * 1.1).floor %>(税込)<br/>
-					  		個数選択、カートに入れる
-					  </td>
-					</tr>
-				</table>
+      	<div class="row">
+				  <div style="float: left; margin: 0px 50px;">
+						<%= attachment_image_tag @product, :image, size:'500x350', fallback: "No_Image.jpg", size:'500x350' %>
+				  </div>
+				  <div style="width:700px; height:500px; float:left;">
+						<h2><%= @product.name %></h2><br>
+						<p><%= @product.introduction %></p>
+						<h3>¥<%= (@product.non_taxed_price*1.1).floor.to_s(:delimited) %><span style="font-size:12px;">（税込）</span></h3>
+						<p><%= form_for (@cart_product) do |f| %>
+				  			<%= f.hidden_field :product_id, :value => @product.id %>
+				  			<% if customer_signed_in? %>
+				        	<!--<= f.number_field :amount , placeholder: "個数選択", min: 1, max: 50 %>-->
+				        	<%= f.select :amount, 個数選択:[1,2,3,4,5,6,7,8,9,10] %>
+				        	<% if @product.is_active == false %>
+							      <%= f.submit '売り切れ', class: "btn btn-new-register btn-lg", disabled: true %>
+							    <% else %>
+							      <%= f.submit "カートに入れる" ,class: 'btn btn-primary' %>
+							    <% end %>
+				        <% end %>
+				       <% end %>
+				    </p>
+				  </div>
+				</div>
 	  	</div>
-    </div>
+	  </div>
   </div>
 </div>

@@ -1,22 +1,28 @@
-<h5>会員の方はこちらからログイン</h5>
-<%= flash[:error] %>
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :メールアドレス %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :パスワード %>
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <h6><%= link_to "=>パスワードを忘れた方はこちら", new_password_path(resource_name) %></h6>
-  
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
-
-<h5>登録がお済みでない方</h5>
-<%= link_to "こちら", new_registration_path(resource_name) %>から新規登録を行ってください
+<div class="body">
+  <div class="container">
+    <div class="row">
+      <br></br>
+      <h5>会員の方はこちらからログイン</h5>
+      <%= flash[:error] %>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="field form-group col-xs-9">
+          <%= f.label :メールアドレス, class: "col-sm-2 control-label" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "col-sm-6 form-control-static" %>
+        </div>
+      
+        <div class="field form-group col-xs-9">
+          <%= f.label :パスワード, class: "col-sm-2 control-label" %>
+          <%= f.password_field :password, autocomplete: "current-password", class: "col-sm-6 form-control-static" %>
+        </div>
+      
+        <h6 class="pull-right col-xs-9"><%= link_to "=>パスワードを忘れた方はこちら", new_password_path(resource_name) %></h6>
+        
+        <div class="actions col-xs-4">
+          <%= f.submit "ログイン", class: "btn btn-primary pull-center btn-md" %>
+        </div>
+      <% end %>
+      
+      <div class="col-lg-12 center-block">
+      <h5>登録がお済みでない方</h5>
+      <%= link_to "こちら", new_registration_path(resource_name) %>から新規登録を行ってください
+      </div>

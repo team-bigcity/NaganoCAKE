@@ -1,43 +1,67 @@
-<h4>登録情報編集</h4>
-
-<%= form_with model: @customer, url: customers_update_path(@customer), local: true do |f| %>
-  
-  <div class="field">
-    名前
-    <%= f.label :（姓）%>
-    <%= f.text_field :last_name, autofocus: true, class: "last_name" %>
-    <%= f.label :（名） %>
-    <%= f.text_field :first_name, autofocus: true, class: "first_name" %>
-  </div>
-  
-  <div class="field">
-    フリガナ
-    <%= f.label :（セイ） %>
-    <%= f.text_field :last_name_kana, autofocus: true, class: "last_name_kana" %>
-    <%= f.label :（メイ） %>
-    <%= f.text_field :first_name_kana , autofocus: true, class: "first_name_kana " %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :メールアドレス %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :郵便番号（ハイフンなし） %>
-    <%= f.text_field :postcode, autofocus: true, class: "postcode" %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :住所 %>
-    <%= f.text_field :address, autofocus: true, class: "address" %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :電話番号（ハイフンなし） %>
-    <%= f.text_field :phone_number, autofocus: true, class: "phone_number" %>
-  </div>
-
-  <%= f.submit '編集内容を保存する', class: 'btn btn-primary' %>
-<% end %>
-        <%= link_to '退会する', customers_destroy_page_path, class: 'btn btn-danger' %>
+<div class="container">
+  <div class="row">
+    <%= flash[:warning] %>
+    <div class="col-lg-12 center-block" style="margin: 50px 0 50px 50px">
+      <h4 style="margin: 0 0 20px 200px">登録情報編集</h4>
+      <div class="form-horizontal">
+        <%= form_with model: @customer, url: customers_update_path(@customer), local: true do |f| %>
+          
+          <div class="form-group">
+          <label class="col-sm-2 control-label" for="InputPassword">氏名</label>
+        		<div class="col-sm-10 form-inline">
+              <%= f.label :（姓）%>
+              <%= f.text_field :last_name, autofocus: true, class: 'form-control' %>
+              <%= f.label :（名） %>
+              <%= f.text_field :first_name, autofocus: true, class: 'form-control' %><br/>
+            </div>
+          </div>
+          
+          <div class="form-group">
+          <label class="col-sm-2 control-label" for="InputEmail">フリガナ</label>
+        		<div class="col-sm-10 form-inline">
+              <%= f.label :（セイ） %>
+              <%= f.text_field :last_name_kana, autofocus: true, class: 'form-control' %>
+              <%= f.label :（メイ） %>
+              <%= f.text_field :first_name_kana , autofocus: true, class: 'form-control' %><br/>
+            </div>
+          </div>
+          
+          <div class="form-group">
+          <label class="col-sm-2 control-label" for="InputEmail">メール・アドレス</label>
+            <div class="col-xs-3">
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %><br/>
+            </div>
+          </div>
+          
+          <div class="form-group">
+          <label class="col-sm-2 control-label" for="InputEmail">郵便番号（ハイフンなし）</label>
+            <div class="col-xs-3">
+              <%= f.text_field :postcode, autofocus: true, class: 'form-control' %><br/>
+            </div>
+          </div>
+        
+          <div class="form-group">
+          <label class="col-sm-2 control-label" for="InputEmail">住所</label>
+            <div class="col-xs-6">
+              <%= f.text_field :address, autofocus: true, class: 'form-control' %><br/>
+            </div>
+          </div>
+          
+          <div class="form-group">
+          <label class="col-sm-2 control-label" for="InputEmail">電話番号（ハイフンなし）</label>
+            <div class="col-xs-3">
+              <%= f.text_field :phone_number, autofocus: true, class: 'form-control' %><br/>
+            </div>
+          </div>
+          <div class="action-group">
+              <div class="col-lg-12 center-block" style="margin: 20px 20px 20px 280px">
+                <%= f.submit '編集内容を保存する', class: 'btn btn-primary' %>
+                <%= link_to '退会する', customers_destroy_page_path, class: 'btn btn-danger' %>
+              </div>
+          </div>
+        <% end %>
+                
+      </div>
+    </div>
+  </div>  
+</div>

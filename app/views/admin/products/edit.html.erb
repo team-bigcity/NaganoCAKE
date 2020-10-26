@@ -1,0 +1,29 @@
+<div class="body"> 
+    <div class="container">
+    <br></br>
+    <h1>商品編集</h1>
+    <br></br>
+        <div class="row">
+            <div class="col-xs-12">
+                <%= form_with model: @product, url: admin_product_path, local:true do |f| %>
+                <div class="col-xs-4">
+                    <div id="img_field">
+	                   <%= attachment_image_tag(@product, :image, size: "300x200" ) %>
+	                </div>
+	                <br></br>
+	                <div class="form-group">
+                        <%= f.attachment_field :image %>
+                    </div>
+                </div>
+                <div class="col-xs-8">
+                    <%= render "form", f: f %>
+                    <br></br>
+                    <div>
+                  	    <%= f.submit "変更を保存", class: "btn btn-primary btn-lg pull-right" %>
+                    </div>
+                </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>

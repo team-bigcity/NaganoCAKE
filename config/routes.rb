@@ -21,11 +21,9 @@ Rails.application.routes.draw do
 
     resources :customers, only: [:show, :edit, :index, :update]
 
-    resources :genres, only: [:index, :create, :edit]
-    patch 'genres/:id', to: 'genres#update'
+    resources :genres, only: [:index, :create, :edit, :update]
 
-    resources :products, except: [:destroy, :update]
-    patch 'products/:id', to: 'products#update'
+    resources :products, except: [:destroy]
   end
 
   #顧客
@@ -33,25 +31,26 @@ Rails.application.routes.draw do
     get '/about', to: 'homes#about'
 
     resources :addresses, only: [:index, :create, :edit, :destroy]
-    patch 'addresses/:id/update', to: 'addresses#update', as: 'addresss_update'
+    patch 'addresses/:id/update', to: 'addresses#update', as: 'addresses_update'
 
     resources :products, only: [:index, :show]
     root 'products#top'
-
+    
+    delete 'cart_products/destroy_all', to: 'cart_products#destroy_all'
     resources :cart_products, only: [:index, :create, :destroy]
-    delete :cart_products, to: 'cart_products#destroy_all'
     patch 'cart_products/:id', to: 'cart_products#update'
 
     get 'orders/complete'
-    get 'orders/confirm'
+    post 'orders/confirm'
     resources :orders, only: [:index, :show, :new, :create,]
 
-    resources :customers, only: [:edit]
+    get 'customers/profile_edit', to: 'customers#edit', as: 'customers_edit'
     get 'customers/destroy_page', to: 'customers#destroy_page'
-    patch 'customers/leave', to: 'customers#leave'
-    get 'customers/my_page'
-    patch '/customers/:id/update', to: 'customers#update', as: 'customers_update'
-    put "/customers/:id/hide" => "customers#hide", as: 'customers_hide'
+    patch 'customers/leave', to: 'customers#leave', as: 'customers_leave'
+    get 'customers/my_page', to: 'customers#my_page'
+    patch 'customers/profile_update', to: 'customers#update', as: 'customers_update'
   end
+  
+  get 'search' => 'searches#search'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

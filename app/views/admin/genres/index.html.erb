@@ -4,7 +4,8 @@
     <br></br>
         <div class="row">
             <div class="col-xs-6">
-                <%= form_for @genre, :url => {:action => :create} do |f| %>
+                <%= form_with model: @genre, url: admin_genres_path, local:true do |f| %>
+                <%= render "layouts/errors", obj: @genre %>
                 <div>
                     <i></i>ジャンル
                     <%= f.text_field :name %>
