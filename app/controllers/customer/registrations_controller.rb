@@ -60,10 +60,10 @@ class Customer::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
   
-  protected
-  def after_sign_up_path_for(resource)
-    customers_my_page_path
-  end
+  # protected
+  # def after_sign_up_path_for(resource)
+  #   root_path
+  # end
   # protected
   # def configure_sign_up_params
   #   devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name, :first_name, :last_name_kana, :first_name_kana, :email, :postcode, :address, :phone_number])
