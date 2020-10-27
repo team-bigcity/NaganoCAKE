@@ -12,12 +12,19 @@ class Customer::ProductsController < ApplicationController
     @genres = Genre.where(is_active: true)
   end
 
+  def sort
+    @genre = Genre.find(params[:id])
+    @products = @genre.products.page(params[:page]).per(8)
+    @genres = Genre.where(is_active: true)
+    render :index
+  end
+
   def show
     @product = Product.find(params[:id])
     @genres = Genre.where(is_active: true)
     @cart_product = CartProduct.new
   end
-  
+
   # private
   # def product_params
   #   params.require(:product).permit(:name, :introduction, :genre_id, :image, :non_taxed_price, :is_active)
