@@ -18,7 +18,7 @@
   password: 'aaaaaa',
   is_deleted: false
   )
-  
+
   Customer.create!(
   last_name: '田中',
   first_name: '花子',
@@ -123,7 +123,7 @@
 
   Product.create!(
   name: 'マフィン',
-  genre_id: '2',
+  genre_id: '3',
   image_id: '',
   introduction: 'マフィンです',
   non_taxed_price: '500',
@@ -132,7 +132,7 @@
 
   Product.create!(
   name: 'マカロン',
-  genre_id: '2',
+  genre_id: '3',
   image_id: '',
   introduction: 'マカロンです',
   non_taxed_price: '500',
@@ -141,7 +141,7 @@
 
   Product.create!(
   name: 'クッキー',
-  genre_id: '2',
+  genre_id: '3',
   image_id: '',
   introduction: '2222',
   non_taxed_price: '400',
@@ -150,7 +150,7 @@
 
   Product.create!(
   name: 'マドレーヌ',
-  genre_id: '2',
+  genre_id: '3',
   image_id: '',
   introduction: 'マドレーヌです',
   non_taxed_price: '600',
