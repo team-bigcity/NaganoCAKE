@@ -30,6 +30,7 @@ class Admin::ProductsController < ApplicationController
 
   def update
     @product = Product.find(params[:id])
+    @genre = Genre.where(is_active: true)
     if @product.update(product_params)
       redirect_to admin_product_path
     else
