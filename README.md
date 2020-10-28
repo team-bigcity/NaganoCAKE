@@ -115,6 +115,7 @@ InstagramのDMやメールで通販の注文を受けていたが、情報管理
 * bootstrap
 * jquery
 * kaminari
+* order_as_specified
 
 # 作成者
 * 大都会  
