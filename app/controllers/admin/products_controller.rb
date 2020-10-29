@@ -12,7 +12,7 @@ class Admin::ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     if @product.save
-      redirect_to admin_products_path
+      redirect_to admin_product_path(@product)
     else
       @genre = Genre.where(is_active: true)
       render :new
@@ -30,13 +30,14 @@ class Admin::ProductsController < ApplicationController
 
   def update
     @product = Product.find(params[:id])
+    @genre = Genre.where(is_active: true)
     if @product.update(product_params)
       redirect_to admin_product_path
     else
       render :edit
     end
   end
-  
+
   private
   def product_params
     params.require(:product).permit(:name, :image, :introduction,

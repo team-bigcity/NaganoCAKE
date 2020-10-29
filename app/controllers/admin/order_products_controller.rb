@@ -10,7 +10,7 @@ class Admin::OrderProductsController < ApplicationController
     @order = @order_product.order
     @order_products = @order.order_products
     if  @order_products.where(making_status: "製作完了").count == @order_products.count
-        @order.update(status: "発送準備中")
+        @order.update(status: "発送準備")
     end
     redirect_to admin_order_path(@order_product.order)
   end

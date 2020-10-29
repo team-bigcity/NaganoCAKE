@@ -17,12 +17,13 @@ class Customer < ApplicationRecord
   validates :phone_number, presence: true, format: {with: /\A\d{10,11}\z/}
   validates :is_deleted, inclusion: {in: [true, false]}
 
+  
   def active_for_authentication?
-    super && (self.is_deleted == false)
+    super && (is_deleted == false)
   end
   
   def self.search(word)
-    Customer.where(['last_name LIKE ? OR first_name LIKE ? OR last_name_kana LIKE ? OR first_name_kana LIKE ?', "%#{word}%", "%#{word}%", "%#{word}%", "%#{word}%"])
+    self.where(['last_name LIKE ? OR first_name LIKE ? OR last_name_kana LIKE ? OR first_name_kana LIKE ?', "%#{word}%", "%#{word}%", "%#{word}%", "%#{word}%"])
   end
 end
 
